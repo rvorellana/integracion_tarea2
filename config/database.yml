@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: postgres
+  password: hola123
+  pool: 5
+
+production:
+  <<: *default
+  database: tarea22_production
+
+development:
+  <<: *default
+  database: tarea22_development
+
+test:
+  <<: *default
+  database: tarea22_test
+
