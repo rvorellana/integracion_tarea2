@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  etrack: MyString
+  name: MyString
+  duration: MyString
+  times_played: 
+  album: one
+
+two:
+  etrack: MyString
+  name: MyString
+  duration: MyString
+  times_played: 
+  album: two
