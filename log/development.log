@@ -1492,3 +1492,76 @@ Processing by AlbumsController#create as */*
 Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 7.9ms)
 
 
+Started POST "/artists/ZnJhbms=/albums" for ::1 at 2021-04-29 02:00:35 -0400
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"cristian", "tracks"=>2, "eartist"=>"ZnJhbms=", "album"=>{"name"=>"cristian"}}
+Completed 400 Bad Request in 1ms (Views: 0.3ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/artists/ZnJhbms=/albums" for ::1 at 2021-04-29 02:00:56 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"cristian", "genre"=>"tremendo", "eartist"=>"ZnJhbms=", "album"=>{"name"=>"cristian", "genre"=>"tremendo"}}
+  [1m[36mArtist Load (1.3ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "ZnJhbms="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:26
+  [1m[36mAlbum Load (1.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."name" = $1 LIMIT $2[0m  [["name", "cristian"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:36
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/albums_controller.rb:38
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:38
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/albums_controller.rb:38
+Completed 500 Internal Server Error in 112ms (ActiveRecord: 16.9ms)
+
+
+  
+NoMethodError (undefined method `gender' for #<Album:0x00007f40980f1600>
+Did you mean?  genre
+               genre=
+               genre?):
+  
+app/controllers/albums_controller.rb:38:in `create'
+Started POST "/artists/ZnJhbms=/albums" for ::1 at 2021-04-29 02:01:33 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"cristian", "genre"=>"tremendo", "eartist"=>"ZnJhbms=", "album"=>{"name"=>"cristian", "genre"=>"tremendo"}}
+  [1m[36mArtist Load (0.8ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "ZnJhbms="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:26
+  [1m[36mAlbum Load (1.0ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."name" = $1 LIMIT $2[0m  [["name", "cristian"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:36
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/albums_controller.rb:38
+  [1m[36mArtist Load (0.9ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:38
+  [1m[36mAlbum Create (1.5ms)[0m  [1m[32mINSERT INTO "albums" ("ealbum", "artist_id", "name", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ealbum", "Y3Jpc3RpYW4="], ["artist_id", 12], ["name", "cristian"], ["genre", "tremendo"], ["created_at", "2021-04-29 06:01:34.110731"], ["updated_at", "2021-04-29 06:01:34.110731"]]
+  ↳ app/controllers/albums_controller.rb:38
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/albums_controller.rb:38
+Completed 201 Created in 89ms (Views: 0.3ms | ActiveRecord: 16.7ms)
+
+
+Started POST "/artists/ZnJhbms=/albums" for ::1 at 2021-04-29 02:01:52 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"cristian", "genre"=>"tremendo", "chuen"=>"chuen", "eartist"=>"ZnJhbms=", "album"=>{"name"=>"cristian", "genre"=>"tremendo"}}
+  [1m[36mArtist Load (0.9ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "ZnJhbms="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:26
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."name" = $1 LIMIT $2[0m  [["name", "cristian"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:36
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/album.rb:15
+Completed 409 Conflict in 16ms (Views: 0.4ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/artists/ZnJhbms=/albums" for ::1 at 2021-04-29 02:02:09 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"cristian", "genre"=>"tremendo", "eartist"=>"ZnJhbms=", "album"=>{"name"=>"cristian", "genre"=>"tremendo"}}
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "ZnJhbms="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:26
+  [1m[36mAlbum Load (0.8ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."name" = $1 LIMIT $2[0m  [["name", "cristian"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:36
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/album.rb:15
+Completed 409 Conflict in 11ms (Views: 0.3ms | ActiveRecord: 1.9ms)
+
+

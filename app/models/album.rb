@@ -1,7 +1,7 @@
 class Album < ApplicationRecord
   belongs_to :artist
   has_many :tracks, dependent: :destroy
-  validates :name, :gender, presence: true
+  validates :name, :genre, presence: true
 
   def encodealbum
     @string = Base64.encode64(self.name).gsub("\n", '')
