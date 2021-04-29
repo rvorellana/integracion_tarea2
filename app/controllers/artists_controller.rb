@@ -57,6 +57,21 @@ class ArtistsController < ApplicationController
   end
 
 
+  def artist_tracks
+    name = params[:eartist]
+    artist = Artist.find_by eartist: name
+    if artist.nil?
+      render json: "Not found", status: :not_found
+    else
+      if artist.albums.empty?
+        render json: "", status: :ok
+      else
+        render json: artist.albums.map{|c| c.index(request.host)}, status: :ok
+      end
+    end
+  end
+
+
   def delete
     name = params[:eartist]
     @artist = Artist.find_by eartist: name

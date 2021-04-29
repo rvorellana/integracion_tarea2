@@ -28,6 +28,7 @@ class TracksController < ApplicationController
       else
         @track_params = params.require(:track).permit(:name, :duration)
         @track_params[:album_id] = album.id
+        @track_params[:artist_id] = album.artist.id
         @track_params["times_played"] = 0
         @track = Track.new(@track_params)
         @track.encodetrack

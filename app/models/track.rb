@@ -1,5 +1,6 @@
 class Track < ApplicationRecord
   belongs_to :album
+  belongs_to :artist
   validates :name, :duration, presence: true
   validates :duration, numericality: {only_float: true}
 
