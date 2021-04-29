@@ -1,7 +1,8 @@
 class ArtistsController < ApplicationController
   def index
-    @artists = Artist.all
-    render json: request.host
+    @artists = Artist.all.map{|c| c.index(request.host)}
+    render json: @artists, status: :created
+    
   end
 
   def show

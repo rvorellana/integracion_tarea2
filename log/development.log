@@ -817,3 +817,32 @@ Processing by ArtistsController#index as HTML
 Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/artists" for ::1 at 2021-04-28 21:26:37 -0400
+  
+SyntaxError (/mnt/d/Desktop/2021-1/Taller de integración/Tarea 2/Tarea2_2/app/controllers/artists_controller.rb:3: syntax error, unexpected ','
+... @artists = Artist.all.map{|c|, c.index}
+...                              ^):
+  
+app/controllers/artists_controller.rb:3: syntax error, unexpected ','
+Started GET "/artists" for ::1 at 2021-04-28 21:26:45 -0400
+Processing by ArtistsController#index as HTML
+  [1m[36mArtist Load (1.8ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/controllers/artists_controller.rb:3
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 18.1ms)
+
+
+  
+NameError (undefined local variable or method `request' for #<Artist:0x00007ffff63c3040>
+Did you mean?  require):
+  
+app/models/artist.rb:13:in `index'
+app/controllers/artists_controller.rb:3:in `block in index'
+app/controllers/artists_controller.rb:3:in `map'
+app/controllers/artists_controller.rb:3:in `index'
+Started GET "/artists" for ::1 at 2021-04-28 21:27:40 -0400
+Processing by ArtistsController#index as HTML
+  [1m[36mArtist Load (1.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/controllers/artists_controller.rb:3
+Completed 201 Created in 51ms (Views: 0.9ms | ActiveRecord: 7.7ms)
+
+
