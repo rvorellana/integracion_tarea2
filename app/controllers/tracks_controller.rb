@@ -29,7 +29,7 @@ class TracksController < ApplicationController
       render json: "No existe", status: :not_found
     else
       track.play
-      render json: track.index, status: :ok
+      render json: track.index(request.host), status: :ok
     end
   end
 
