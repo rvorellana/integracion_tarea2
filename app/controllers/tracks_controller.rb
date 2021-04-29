@@ -31,7 +31,7 @@ class TracksController < ApplicationController
       @track = Track.new(@track_params)
       @track.encodetrack
       track_exists = Track.find_by name: @track.name
-      if track_exists.empty?
+      if track_exists.nil?
         if @track.save
           render json: @track.index(request.host), status: :created
         else
@@ -46,11 +46,11 @@ class TracksController < ApplicationController
   def delete
     name = params[:etrack]
     @track = Track.find_by etrack: name
-    if @track.empty?
+    if @track.nil?
       render json: "No existe", status: :not_found
     else
       @track.destroy
-      render json: "bien", status: :no_content
+      render json: "", status: :no_content
     end
   end
 end

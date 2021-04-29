@@ -52,7 +52,7 @@ class ArtistsController < ApplicationController
         render json: @artist.albums, status: :ok
       else
         @albums = artist.albums.map{|c| c.index(request.host)}
-        render json: @albums
+        render json: @albums.index(request.host)
       end
     end
   end
@@ -61,13 +61,12 @@ class ArtistsController < ApplicationController
   def delete
     name = params[:eartist]
     @artist = Artist.find_by eartist: name
-    if @artist.empty?
+    if @artist.nil?
       render json: "No existe", status: :not_found
     else
       @artist.destroy
       render json: "Eliminado", status: :no_content
     end
     
-    render json: "Eliminado", status: :no_content
   end
 end
