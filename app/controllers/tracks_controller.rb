@@ -53,6 +53,7 @@ class TracksController < ApplicationController
           if track_exists.nil?
             encode = {etrack: track.encodetrack}
             if track.save
+              track.update(encode)
             render json: track.index(request.host), status: :created
             else
               render json: "error no se pudo", status: :bad_request
