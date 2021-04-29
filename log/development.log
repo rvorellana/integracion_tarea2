@@ -5328,3 +5328,44 @@ Processing by AlbumsController#create as */*
 Completed 201 Created in 32ms (Views: 0.2ms | ActiveRecord: 7.2ms)
 
 
+Started GET "/artists/Y2h1ZW5v/albums" for ::1 at 2021-04-29 18:46:40 -0400
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"name"=>"Test album", "genre"=>"nice", "eartist"=>"Y2h1ZW5v", "artist"=>{"name"=>"Test album"}}
+  [1m[36mArtist Load (1.5ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y2h1ZW5v"], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:57
+  [1m[36mAlbum Load (1.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 3]]
+  ↳ app/controllers/artists_controller.rb:64
+Completed 200 OK in 66ms (Views: 0.5ms | ActiveRecord: 11.6ms)
+
+
+Started POST "/artists/Y2h1ZW5v/albums" for ::1 at 2021-04-29 18:46:49 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"Test dsaalbum", "genre"=>"dsanice", "eartist"=>"Y2h1ZW5v", "album"=>{"name"=>"Test dsaalbum", "genre"=>"dsanice"}}
+  [1m[36mArtist Load (0.8ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y2h1ZW5v"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:29
+Unpermitted parameters: :eartist, :album
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."name" = $1 LIMIT $2[0m  [["name", "Test dsaalbum"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:37
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/albums_controller.rb:39
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:39
+  [1m[36mAlbum Create (0.9ms)[0m  [1m[32mINSERT INTO "albums" ("ealbum", "artist_id", "name", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ealbum", "VGVzdCBkc2FhbGJ1bQ=="], ["artist_id", 3], ["name", "Test dsaalbum"], ["genre", "dsanice"], ["created_at", "2021-04-29 22:46:49.946161"], ["updated_at", "2021-04-29 22:46:49.946161"]]
+  ↳ app/controllers/albums_controller.rb:39
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/albums_controller.rb:39
+Completed 201 Created in 28ms (Views: 0.4ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/artists/Y2h1ZW5v/albums" for ::1 at 2021-04-29 18:47:10 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"name"=>"Test dsaalbum", "genre"=>"dsanice", "eartist"=>"Y2h1ZW5v", "artist"=>{"name"=>"Test dsaalbum"}}
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y2h1ZW5v"], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:57
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 3]]
+  ↳ app/controllers/artists_controller.rb:64
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.2ms)
+
+

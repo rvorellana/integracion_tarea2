@@ -39,17 +39,17 @@ class AlbumsController < ApplicationController
             if album.save
               render json: album.index(request.host), status: :created
             else
-              render json: "error no se pudo", status: :bad_request
+              render json: "error no se guardó", status: :bad_request
             end
           else
             render json: album_exists.index(request.host), status: :conflict
           end
         end
       else
-        render json: "error no se pudo", status: :bad_request
+        render json: "error eran del tipo necesario", status: :bad_request
       end
     else
-      render json: "error no se pudo", status: :bad_request
+      render json: "error no estaba lo necesario", status: :bad_request
     end
   end
 
