@@ -56,6 +56,21 @@ class ArtistsController < ApplicationController
     end
   end
 
+  def artist_play
+    name = params[:eartist]
+    artist = Artist.find_by eartist: name
+    if artist.nil?
+      render json: "Not found", status: :not_found
+    else
+      if artist.tracks.nil?
+        render json: "", status: :ok
+      else
+        artist.tracks.map{|c| c.play}
+        render json: artist.tracks.map{|c| c.index(request.host)}, status: :ok
+      end
+    end
+  end
+
 
   def artist_tracks
     name = params[:eartist]

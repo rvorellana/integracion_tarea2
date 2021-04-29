@@ -22,4 +22,8 @@ class Track < ApplicationRecord
     return @track_dict
   end
 
+  def play
+    self.times_played += 1
+  end
+
 end

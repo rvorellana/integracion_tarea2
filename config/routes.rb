@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post 'artists', to: 'artists#create', as: 'artist_create'
   get 'artists/:eartist/albums', to: 'artists#artist_albums', as: 'artist_albums'
   get 'artists/:eartist/tracks', to: 'artists#artist_tracks', as: 'artist_tracks'
+  get 'artists/:eartist/albums/play', to: 'artists#artist_play', as: 'artist_play'
   delete 'artists/:eartist', to: 'artists#delete', as: 'artist_delete'
 
   # Albums
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
   get 'tracks', to: 'tracks#index', as: 'tracks_index'
   get 'tracks/:etrack', to: 'tracks#show', as: 'track_show'
   post 'albums/:ealbum/tracks', to: 'tracks#create', as: 'track_create'
-  delete 'tracks/:ealbum', to: 'tracks#delete', as: 'track_delete'
+  delete 'tracks/:etrack', to: 'tracks#delete', as: 'track_delete'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'artists#index'
 end
