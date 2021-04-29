@@ -23,7 +23,7 @@ class ArtistsController < ApplicationController
 
     
 
-      if ((params[:artist].key?("name")) && (params[:artist].key?("age")) && (params[:artist].length == 2 ))
+      if ((params[:artist].key?("name")) && (params[:artist].key?("age")) && (params[:artist].length <= 2 ))
       artist_params = params.require(:artist).permit(:name, :age)
       artist = Artist.new(artist_params)
       artist.encodeartist

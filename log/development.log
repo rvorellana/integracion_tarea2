@@ -3530,3 +3530,13 @@ Processing by ArtistsController#create as */*
 Completed 201 Created in 25ms (Views: 0.2ms | ActiveRecord: 7.8ms)
 
 
+Started POST "/artists" for ::1 at 2021-04-29 05:51:58 -0400
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"Michael Jackson", "age"=>21, "ta"=>"ta", "artist"=>{"name"=>"Michael Jackson", "age"=>21}}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 21.0ms)
+
+
+  
+NoMethodError (undefined method `length' for #<ActionController::Parameters:0x00007fbd701e2ca8>):
+  
+app/controllers/artists_controller.rb:26:in `create'
