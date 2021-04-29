@@ -3466,3 +3466,11 @@ Processing by TracksController#show as */*
 Completed 404 Not Found in 17ms (Views: 0.3ms | ActiveRecord: 2.3ms)
 
 
+Started GET "/tracks/unknown_id" for ::1 at 2021-04-29 05:19:43 -0400
+Processing by TracksController#show as */*
+  Parameters: {"etrack"=>"unknown_id"}
+  [1m[36mTrack Load (1.2ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."etrack" = $1 LIMIT $2[0m  [["etrack", "unknown_id"], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:14
+Completed 404 Not Found in 27ms (Views: 0.1ms | ActiveRecord: 7.2ms)
+
+

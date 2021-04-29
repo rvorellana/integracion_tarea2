@@ -1,10 +1,10 @@
 class TracksController < ApplicationController
   def index
-    @tracks = Track.all
+    tracks = Track.all
     if Track.all.empty?
-      render json: @tracks, status: :ok
+      render json: tracks, status: :ok
     else
-      render json: @tracks.map{|c| c.index(request.host)}, status: :ok
+      render json: tracks.map{|c| c.index(request.host)}, status: :ok
     end
   end
 
@@ -17,7 +17,7 @@ class TracksController < ApplicationController
     if track.nil?
       render json: "Not Found", status: :not_found
     else
-      render json: @track.index(request.host), status: :ok
+      render json: track.index(request.host), status: :ok
     end
   end
 
@@ -25,12 +25,12 @@ class TracksController < ApplicationController
 
   def track_play
     name = params[:etrack]
-    @track = Track.find_by etrack: name
-    if @track.nil?
+    track = Track.find_by etrack: name
+    if track.nil?
       render json: "No existe", status: :not_found
     else
-      @track.play
-      render json: @track.index, status: :ok
+      track.play
+      render json: track.index, status: :ok
     end
   end
 
@@ -66,11 +66,11 @@ class TracksController < ApplicationController
 
   def delete
     name = params[:etrack]
-    @track = Track.find_by etrack: name
-    if @track.nil?
+    track = Track.find_by etrack: name
+    if track.nil?
       render json: "No existe", status: :not_found
     else
-      @track.destroy
+      track.destroy
       render json: "", status: :no_content
     end
   end

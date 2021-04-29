@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'tracks', to: 'tracks#index', as: 'tracks_index'
   get 'tracks/:etrack', to: 'tracks#show', as: 'track_show'
   post 'albums/:ealbum/tracks', to: 'tracks#create', as: 'track_create'
+  put 'tracks/:etrack/play', to: 'tracks#track_play', as: 'track_play'
   delete 'tracks/:etrack', to: 'tracks#delete', as: 'track_delete'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'artists#index'
