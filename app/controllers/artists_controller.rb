@@ -1,10 +1,10 @@
 class ArtistsController < ApplicationController
   def index
     if Artist.all.empty?
-      render json: Artist.all, status: :ok
+      render json: "No hay nadie", status: :ok
     else
       artists = Artist.all.map{|c| c.index(request.host)}
-      render json: "No hay nadie", status: :ok
+      render json: artists, status: :ok
     end
   end
 

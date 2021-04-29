@@ -3762,3 +3762,237 @@ Processing by AlbumsController#index as HTML
 Completed 200 OK in 27ms (Views: 1.9ms | ActiveRecord: 6.9ms)
 
 
+Started POST "/artists" for ::1 at 2021-04-29 16:12:16 -0400
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"Michael Jackson", "age"=>21, "ta"=>"ta", "artist"=>{"name"=>"Michael Jackson", "age"=>21}}
+  [1m[36mArtist Load (0.8ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Michael Jackson"], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:30
+Completed 409 Conflict in 23ms (Views: 0.2ms | ActiveRecord: 8.7ms)
+
+
+Started POST "/artists" for ::1 at 2021-04-29 16:12:17 -0400
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"Michael Jackson", "age"=>21, "ta"=>"ta", "artist"=>{"name"=>"Michael Jackson", "age"=>21}}
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Michael Jackson"], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:30
+Completed 409 Conflict in 5ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/artists" for ::1 at 2021-04-29 16:12:18 -0400
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"Michael Jackson", "age"=>21, "ta"=>"ta", "artist"=>{"name"=>"Michael Jackson", "age"=>21}}
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Michael Jackson"], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:30
+Completed 409 Conflict in 4ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/artists" for ::1 at 2021-04-29 16:12:49 -0400
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"Michael Jacksons", "age"=>21, "ta"=>"ta", "artist"=>{"name"=>"Michael Jacksons", "age"=>21}}
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Michael Jacksons"], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:30
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artists_controller.rb:32
+  [1m[36mArtist Create (0.9ms)[0m  [1m[32mINSERT INTO "artists" ("eartist", "name", "age", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["eartist", "TWljaGFlbCBKYWNrc29ucw"], ["name", "Michael Jacksons"], ["age", 21], ["created_at", "2021-04-29 20:12:49.998131"], ["updated_at", "2021-04-29 20:12:49.998131"]]
+  ↳ app/controllers/artists_controller.rb:32
+  [1m[35m (3.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/artists_controller.rb:32
+Completed 201 Created in 17ms (Views: 0.2ms | ActiveRecord: 5.2ms)
+
+
+Started POST "/artists" for ::1 at 2021-04-29 16:13:06 -0400
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"Michael Jacksons", "artist"=>{"name"=>"Michael Jacksons"}}
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/artists" for ::1 at 2021-04-29 16:13:23 -0400
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "artist"=>{"name"=>2, "age"=>"chuen"}}
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/artists" for ::1 at 2021-04-29 16:13:26 -0400
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "artist"=>{"name"=>2, "age"=>"chuen"}}
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/artists" for ::1 at 2021-04-29 16:13:26 -0400
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "artist"=>{"name"=>2, "age"=>"chuen"}}
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/artists" for ::1 at 2021-04-29 16:13:27 -0400
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "artist"=>{"name"=>2, "age"=>"chuen"}}
+Completed 400 Bad Request in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/artists" for ::1 at 2021-04-29 16:15:29 -0400
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "artist"=>{"name"=>2, "age"=>"chuen"}}
+Completed 400 Bad Request in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artists" for ::1 at 2021-04-29 16:15:33 -0400
+Processing by ArtistsController#index as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "artist"=>{"name"=>2, "age"=>"chuen"}}
+  [1m[36mArtist Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "artists" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:3
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/controllers/artists_controller.rb:6
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/artists" for ::1 at 2021-04-29 16:16:50 -0400
+Processing by ArtistsController#index as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "artist"=>{"name"=>2, "age"=>"chuen"}}
+  [1m[36mArtist Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "artists" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:3
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/controllers/artists_controller.rb:6
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:17:36 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "eartist"=>"TWljaGFlbCBKYWNrc29u", "artist"=>{"name"=>2, "age"=>"chuen"}}
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "TWljaGFlbCBKYWNrc29u"], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:51
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 1]]
+  ↳ app/controllers/artists_controller.rb:58
+Completed 200 OK in 34ms (Views: 0.1ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/artists/TWljaGFlbCBKYWNrc29u" for ::1 at 2021-04-29 16:17:40 -0400
+Processing by ArtistsController#show as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "eartist"=>"TWljaGFlbCBKYWNrc29u", "artist"=>{"name"=>2, "age"=>"chuen"}}
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "TWljaGFlbCBKYWNrc29u"], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:13
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:17:51 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "eartist"=>"TWljaGFlbCBKYWNrc29u", "artist"=>{"name"=>2, "age"=>"chuen"}}
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "TWljaGFlbCBKYWNrc29u"], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:51
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 1]]
+  ↳ app/controllers/artists_controller.rb:58
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:18:05 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "eartist"=>"TWljaGFlbCBKYWNrc29u", "album"=>{"name"=>2}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:18:33 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "eartist"=>"TWljaGFlbCBKYWNrc29u", "album"=>{"name"=>2}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:19:46 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "eartist"=>"TWljaGFlbCBKYWNrc29u", "album"=>{"name"=>2}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:21:16 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "eartist"=>"TWljaGFlbCBKYWNrc29u", "album"=>{"name"=>2}}
+Completed 300 Multiple Choices in 0ms (Views: 0.1ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:22:03 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "eartist"=>"TWljaGFlbCBKYWNrc29u", "album"=>{"name"=>2}}
+Completed 300 Multiple Choices in 1ms (Views: 0.1ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:23:01 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "eartist"=>"TWljaGFlbCBKYWNrc29u", "album"=>{"name"=>2}}
+Completed 300 Multiple Choices in 1ms (Views: 0.1ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:23:30 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "eartist"=>"TWljaGFlbCBKYWNrc29u", "album"=>{"name"=>2}}
+Completed 300 Multiple Choices in 1ms (Views: 0.2ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:24:20 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "eartist"=>"TWljaGFlbCBKYWNrc29u", "album"=>{"name"=>2}}
+Completed 300 Multiple Choices in 0ms (Views: 0.1ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:25:07 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "eartist"=>"TWljaGFlbCBKYWNrc29u", "album"=>{"name"=>2}}
+Completed 300 Multiple Choices in 0ms (Views: 0.1ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:25:40 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>2, "age"=>"chuen", "eartist"=>"TWljaGFlbCBKYWNrc29u", "album"=>{"name"=>2}}
+Completed 300 Multiple Choices in 0ms (Views: 0.1ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:26:32 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>2, "genre"=>"chuen", "eartist"=>"TWljaGFlbCBKYWNrc29u", "album"=>{"name"=>2, "genre"=>"chuen"}}
+Completed 500 Internal Server Error in 1ms (Views: 0.1ms | ActiveRecord: 2.2ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/albums_controller.rb:31:in `create'
+Started POST "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:27:10 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>2, "genre"=>"chuen", "eartist"=>"TWljaGFlbCBKYWNrc29u", "album"=>{"name"=>2, "genre"=>"chuen"}}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:28:51 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>2, "genre"=>"chuen", "eartist"=>"TWljaGFlbCBKYWNrc29u", "album"=>{"name"=>2, "genre"=>"chuen"}}
+Completed 400 Bad Request in 1ms (Views: 0.1ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:29:01 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>2, "genre"=>2, "eartist"=>"TWljaGFlbCBKYWNrc29u", "album"=>{"name"=>2, "genre"=>2}}
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:29:09 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>2, "eartist"=>"TWljaGFlbCBKYWNrc29u", "album"=>{"name"=>2}}
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/artists/TWljaGFlbCBKYWNrc29u/albums" for ::1 at 2021-04-29 16:29:29 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"rememdo", "genre"=>"good", "eartist"=>"TWljaGFlbCBKYWNrc29u", "album"=>{"name"=>"rememdo", "genre"=>"good"}}
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "TWljaGFlbCBKYWNrc29u"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:29
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."name" = $1 LIMIT $2[0m  [["name", "rememdo"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:37
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/albums_controller.rb:39
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:39
+  [1m[36mAlbum Create (1.7ms)[0m  [1m[32mINSERT INTO "albums" ("ealbum", "artist_id", "name", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ealbum", "cmVtZW1kbw=="], ["artist_id", 1], ["name", "rememdo"], ["genre", "good"], ["created_at", "2021-04-29 20:29:29.437281"], ["updated_at", "2021-04-29 20:29:29.437281"]]
+  ↳ app/controllers/albums_controller.rb:39
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/albums_controller.rb:39
+Completed 201 Created in 56ms (Views: 0.3ms | ActiveRecord: 10.8ms)
+
+
