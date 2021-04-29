@@ -1320,3 +1320,81 @@ Processing by ArtistsController#show as HTML
 Completed 404 Not Found in 18ms (Views: 0.3ms | ActiveRecord: 3.5ms)
 
 
+Started GET "/artists" for ::1 at 2021-04-29 01:22:18 -0400
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+Processing by ArtistsController#index as HTML
+  [1m[36mArtist Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM "artists" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:3
+  [1m[36mArtist Load (1.0ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/controllers/artists_controller.rb:6
+Completed 200 OK in 77ms (Views: 2.7ms | ActiveRecord: 14.1ms)
+
+
+Started GET "/artists/ZnJhbms=/albums" for ::1 at 2021-04-29 01:22:32 -0400
+Processing by ArtistsController#artist_albums as HTML
+  Parameters: {"eartist"=>"ZnJhbms="}
+  [1m[36mArtist Load (0.8ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "ZnJhbms="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Exists (1.6ms)[0m  [1m[34mSELECT  1 AS one FROM "albums" WHERE "albums"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:51
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 5.5ms)
+
+
+  
+NoMethodError (undefined method `albums' for nil:NilClass):
+  
+app/controllers/artists_controller.rb:52:in `artist_albums'
+Started GET "/artists/ZnJhbms=/albums" for ::1 at 2021-04-29 01:23:42 -0400
+Processing by ArtistsController#artist_albums as HTML
+  Parameters: {"eartist"=>"ZnJhbms="}
+  [1m[36mArtist Load (0.8ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "ZnJhbms="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "albums" WHERE "albums"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:51
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 12]]
+  ↳ app/controllers/artists_controller.rb:52
+Completed 200 OK in 68ms (Views: 3.6ms | ActiveRecord: 10.2ms)
+
+
+Started POST "/artists/ZnJhbms=/albums" for ::1 at 2021-04-29 01:24:45 -0400
+  
+SyntaxError (/mnt/d/Desktop/2021-1/Taller de integración/Tarea 2/Tarea2_2/app/controllers/albums_controller.rb:64: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/albums_controller.rb:64: syntax error, unexpected end-of-input, expecting end
+Started POST "/artists/ZnJhbms=/albums" for ::1 at 2021-04-29 01:25:24 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"chuen", "tracks"=>2, "eartist"=>"ZnJhbms=", "album"=>{"name"=>"chuen"}}
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "ZnJhbms="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:24
+Completed 200 OK in 25ms (Views: 0.1ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/artists/ZnJhbms=/albums" for ::1 at 2021-04-29 01:26:11 -0400
+Processing by ArtistsController#artist_albums as HTML
+  Parameters: {"eartist"=>"ZnJhbms="}
+  [1m[36mArtist Load (0.9ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "ZnJhbms="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "albums" WHERE "albums"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:51
+  [1m[36mAlbum Load (0.9ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 12]]
+  ↳ app/controllers/artists_controller.rb:52
+Completed 200 OK in 24ms (Views: 6.5ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/artists/ZnJhbms=/albums" for ::1 at 2021-04-29 01:26:23 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"chuen", "tracks"=>2, "eartist"=>"ZnJhbms=", "album"=>{"name"=>"chuen"}}
+  [1m[36mArtist Load (0.9ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "ZnJhbms="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:24
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/artists/ZnJhbms=/albums" for ::1 at 2021-04-29 01:27:25 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"chuen", "tracks"=>2, "eartist"=>"ZnJhbms=", "album"=>{"name"=>"chuen"}}
+  [1m[36mArtist Load (1.1ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "ZnJhbms="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:24
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+

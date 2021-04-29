@@ -49,7 +49,7 @@ class ArtistsController < ApplicationController
       render json: "Not found", status: :not_found
     else
       if artist.albums.empty?
-        render json: @artist.albums, status: :ok
+        render json: artist.albums, status: :ok
       else
         @albums = artist.albums.map{|c| c.index(request.host)}
         render json: @albums.index(request.host)
