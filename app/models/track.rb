@@ -22,7 +22,7 @@ class Track < ApplicationRecord
 
   def play
     new_params = {times_played: times_played+1}
-    return new_params
+    self.update(new_params)
   end
 
 end

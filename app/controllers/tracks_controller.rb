@@ -28,7 +28,7 @@ class TracksController < ApplicationController
     if track.nil?
       render json: "No existe", status: :not_found
     else
-      track.update(track.play_track)
+      track.play
       render json: track.index(request.host), status: :ok
     end
   end
