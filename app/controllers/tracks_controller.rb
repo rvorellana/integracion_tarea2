@@ -10,9 +10,11 @@ class TracksController < ApplicationController
 
   def show
     name = params[:etrack]
-    @track = Track.find_by ealbum: name
+    
+    track = Track.find_by etrack: name
+    # render json: track, status: :ok
 
-    if @track.nil?
+    if track.nil?
       render json: "Not Found", status: :not_found
     else
       render json: @track.index(request.host), status: :ok
