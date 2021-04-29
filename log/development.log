@@ -1651,3 +1651,170 @@ Processing by AlbumsController#create as */*
 Completed 409 Conflict in 15ms (Views: 0.3ms | ActiveRecord: 1.9ms)
 
 
+Started GET "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:10:11 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"name"=>"greatest hits", "genre"=>"nice", "no tan tremendo"=>"sabe", "eartist"=>"Y3Jpc3RpYW4=", "artist"=>{"name"=>"greatest hits"}}
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "albums" WHERE "albums"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:51
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 14]]
+  ↳ app/controllers/artists_controller.rb:54
+Completed 200 OK in 42ms (Views: 0.1ms | ActiveRecord: 13.1ms)
+
+
+Started GET "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:10:29 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"eartist"=>"Y3Jpc3RpYW4="}
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "albums" WHERE "albums"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:51
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 14]]
+  ↳ app/controllers/artists_controller.rb:54
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/artists/Y3Jpc3RpYdasW4=/albums" for ::1 at 2021-04-29 02:10:45 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"eartist"=>"Y3Jpc3RpYdasW4="}
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYdasW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+Completed 404 Not Found in 3ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/artists/Y3Jpc3RpYdasW4=/albums" for ::1 at 2021-04-29 02:15:58 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"eartist"=>"Y3Jpc3RpYdasW4="}
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYdasW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+Completed 404 Not Found in 16ms (Views: 0.1ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/artists/Y3Jpc3RpYdasW4=" for ::1 at 2021-04-29 02:16:06 -0400
+Processing by ArtistsController#show as */*
+  Parameters: {"eartist"=>"Y3Jpc3RpYdasW4="}
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYdasW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:13
+Completed 404 Not Found in 7ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/artists" for ::1 at 2021-04-29 02:16:14 -0400
+Processing by ArtistsController#index as */*
+  [1m[36mArtist Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "artists" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:3
+  [1m[36mArtist Load (0.9ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/controllers/artists_controller.rb:6
+Completed 200 OK in 20ms (Views: 0.5ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/artists" for ::1 at 2021-04-29 02:16:21 -0400
+Processing by ArtistsController#index as */*
+  [1m[36mArtist Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "artists" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:3
+  [1m[36mArtist Load (0.9ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/controllers/artists_controller.rb:6
+Completed 200 OK in 9ms (Views: 1.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:16:41 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"eartist"=>"Y3Jpc3RpYW4="}
+  [1m[36mArtist Load (0.9ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "albums" WHERE "albums"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:51
+  [1m[36mAlbum Load (0.8ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 14]]
+  ↳ app/controllers/artists_controller.rb:54
+Completed 200 OK in 54ms (Views: 0.2ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:17:15 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"eartist"=>"Y3Jpc3RpYW4="}
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "albums" WHERE "albums"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:51
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 14]]
+  ↳ app/controllers/artists_controller.rb:54
+Completed 200 OK in 79ms (Views: 0.2ms | ActiveRecord: 12.6ms)
+
+
+Started GET "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:17:48 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"eartist"=>"Y3Jpc3RpYW4="}
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Load (1.0ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 14]]
+  ↳ app/controllers/artists_controller.rb:48
+Completed 200 OK in 55ms (Views: 24.6ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:19:30 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"eartist"=>"Y3Jpc3RpYW4="}
+  [1m[36mArtist Load (1.0ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "albums" WHERE "albums"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:51
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 14]]
+  ↳ app/controllers/artists_controller.rb:54
+Completed 200 OK in 63ms (Views: 14.3ms | ActiveRecord: 10.1ms)
+
+
+Started GET "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:19:36 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"eartist"=>"Y3Jpc3RpYW4="}
+  [1m[36mArtist Load (1.1ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "albums" WHERE "albums"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:51
+  [1m[36mAlbum Load (0.8ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 14]]
+  ↳ app/controllers/artists_controller.rb:54
+Completed 200 OK in 17ms (Views: 5.1ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:20:07 -0400
+  
+SyntaxError (/mnt/d/Desktop/2021-1/Taller de integración/Tarea 2/Tarea2_2/app/controllers/artists_controller.rb:54: syntax error, unexpected ',', expecting '}'
+....map{|c| c.index(request.host), status: :ok
+...                              ^):
+  
+app/controllers/artists_controller.rb:54: syntax error, unexpected ',', expecting '}'
+Started GET "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:21:03 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"eartist"=>"Y3Jpc3RpYW4="}
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "albums" WHERE "albums"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:51
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 14]]
+  ↳ app/controllers/artists_controller.rb:54
+Completed 200 OK in 62ms (Views: 0.2ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:21:11 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"eartist"=>"Y3Jpc3RpYW4="}
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "albums" WHERE "albums"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:51
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 14]]
+  ↳ app/controllers/artists_controller.rb:54
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:21:49 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"eartist"=>"Y3Jpc3RpYW4="}
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "albums" WHERE "albums"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:51
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 14]]
+  ↳ app/controllers/artists_controller.rb:54
+Completed 200 OK in 55ms (Views: 0.2ms | ActiveRecord: 9.9ms)
+
+
