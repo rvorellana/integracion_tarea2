@@ -5369,3 +5369,19 @@ Processing by ArtistsController#artist_albums as */*
 Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.2ms)
 
 
+Started GET "/artists/Y2h1ZW5v/albums" for ::1 at 2021-04-29 18:54:12 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"name"=>"Test dsaalbum", "genre"=>"dsanice", "eartist"=>"Y2h1ZW5v", "artist"=>{"name"=>"Test dsaalbum"}}
+  [1m[36mArtist Load (0.9ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y2h1ZW5v"], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:57
+  [1m[36mAlbum Load (1.0ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 3]]
+  ↳ app/controllers/artists_controller.rb:64
+Completed 200 OK in 41ms (Views: 0.3ms | ActiveRecord: 17.7ms)
+
+
+Started POST "/artists/Y2h1ZW5v/albums" for ::1 at 2021-04-29 18:54:22 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"Test dsaalbum", "genre"=>"dsanice", "eartist"=>"Y2h1ZW5v", "album"=>{"name"=>"Test dsaalbum", "genre"=>"dsanice"}}
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+

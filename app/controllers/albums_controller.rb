@@ -20,7 +20,11 @@ class AlbumsController < ApplicationController
   end
 
   def create
-      render json: params, status: 200
+    if params[:album].nil?
+      render json: "no habia album"
+    else
+      render json: params[:album]
+    end
     # if (params.key?("name")) && (params.key?("genre"))
     #   name = params["name"]
     #   genre = params["genre"]
