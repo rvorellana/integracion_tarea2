@@ -1565,3 +1565,89 @@ Processing by AlbumsController#create as */*
 Completed 409 Conflict in 11ms (Views: 0.3ms | ActiveRecord: 1.9ms)
 
 
+Started POST "/artists" for ::1 at 2021-04-29 02:03:49 -0400
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"cristian", "age"=>15, "artist"=>{"name"=>"cristian", "age"=>15}}
+  [1m[36mArtist Load (6.5ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "cristian"], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:29
+  [1m[35m (13.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artists_controller.rb:31
+  [1m[36mArtist Create (1.0ms)[0m  [1m[32mINSERT INTO "artists" ("eartist", "name", "age", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["eartist", "Y3Jpc3RpYW4="], ["name", "cristian"], ["age", 15], ["created_at", "2021-04-29 06:03:49.232621"], ["updated_at", "2021-04-29 06:03:49.232621"]]
+  ↳ app/controllers/artists_controller.rb:31
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/artists_controller.rb:31
+Completed 201 Created in 77ms (Views: 0.3ms | ActiveRecord: 25.1ms)
+
+
+Started GET "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:04:32 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"name"=>"cristian", "age"=>15, "eartist"=>"Y3Jpc3RpYW4=", "artist"=>{"name"=>"cristian", "age"=>15}}
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "albums" WHERE "albums"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:51
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 14]]
+  ↳ app/controllers/artists_controller.rb:52
+Completed 200 OK in 50ms (Views: 3.1ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:04:54 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"greatest hits", "genre"=>"nice", "eartist"=>"Y3Jpc3RpYW4=", "album"=>{"name"=>"greatest hits", "genre"=>"nice"}}
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:26
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."name" = $1 LIMIT $2[0m  [["name", "greatest hits"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:36
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/albums_controller.rb:38
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:38
+  [1m[36mAlbum Create (0.9ms)[0m  [1m[32mINSERT INTO "albums" ("ealbum", "artist_id", "name", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ealbum", "Z3JlYXRlc3QgaGl0cw=="], ["artist_id", 14], ["name", "greatest hits"], ["genre", "nice"], ["created_at", "2021-04-29 06:04:54.626862"], ["updated_at", "2021-04-29 06:04:54.626862"]]
+  ↳ app/controllers/albums_controller.rb:38
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/albums_controller.rb:38
+Completed 201 Created in 25ms (Views: 0.2ms | ActiveRecord: 5.9ms)
+
+
+Started POST "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:04:59 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"greatest hits", "genre"=>"nice", "eartist"=>"Y3Jpc3RpYW4=", "album"=>{"name"=>"greatest hits", "genre"=>"nice"}}
+  [1m[36mArtist Load (0.8ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:26
+  [1m[36mAlbum Load (1.1ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."name" = $1 LIMIT $2[0m  [["name", "greatest hits"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:36
+  [1m[36mArtist Load (0.9ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/album.rb:15
+Completed 409 Conflict in 17ms (Views: 0.3ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:05:14 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"greatest hits", "genre"=>"nice", "no tan tremendo"=>"sabe", "eartist"=>"Y3Jpc3RpYW4=", "album"=>{"name"=>"greatest hits", "genre"=>"nice"}}
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:26
+  [1m[36mAlbum Load (0.9ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."name" = $1 LIMIT $2[0m  [["name", "greatest hits"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:36
+  [1m[36mArtist Load (0.9ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/album.rb:15
+Completed 409 Conflict in 16ms (Views: 0.2ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:05:39 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"greatest hitsdas", "eartist"=>"Y3Jpc3RpYW4=", "album"=>{"name"=>"greatest hitsdas"}}
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:05:55 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"greatest hits", "genre"=>"nice", "no tan tremendo"=>"sabe", "eartist"=>"Y3Jpc3RpYW4=", "album"=>{"name"=>"greatest hits", "genre"=>"nice"}}
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:26
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."name" = $1 LIMIT $2[0m  [["name", "greatest hits"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:36
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/album.rb:15
+Completed 409 Conflict in 15ms (Views: 0.3ms | ActiveRecord: 1.9ms)
+
+
