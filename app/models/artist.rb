@@ -1,5 +1,6 @@
 class Artist < ApplicationRecord
   has_many :albums, dependent: :destroy
+  has_many :tracks, dependent: :destroy
   validates :name, :age, presence: true
   validates :age, numericality: { only_integer: true }
 

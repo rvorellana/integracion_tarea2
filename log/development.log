@@ -3070,3 +3070,25 @@ Completed 500 Internal Server Error in 46ms (ActiveRecord: 15.7ms)
 NoMethodError (undefined method `empty?' for #<Album:0x00007fffd3e687e8>):
   
 app/controllers/tracks_controller.rb:26:in `create'
+Started GET "/albums/Y2h1ZW5vcw==/tracks" for ::1 at 2021-04-29 04:42:50 -0400
+Processing by AlbumsController#album_tracks as */*
+  Parameters: {"name"=>"Off the Wall:TWl", "duration"=>3.0, "ealbum"=>"Y2h1ZW5vcw==", "album"=>{"name"=>"Off the Wall:TWl"}}
+  [1m[36mAlbum Load (2.6ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Y2h1ZW5vcw=="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:55
+  [1m[36mTrack Exists (2.0ms)[0m  [1m[34mSELECT  1 AS one FROM "tracks" WHERE "tracks"."album_id" = $1 LIMIT $2[0m  [["album_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:59
+  [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = $1[0m  [["album_id", 1]]
+  ↳ app/controllers/albums_controller.rb:62
+  [1m[36mArtist Load (2.2ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/track.rb:16
+Completed 200 OK in 140ms (Views: 0.5ms | ActiveRecord: 42.1ms)
+
+
+Started GET "/artists/Y2h1ZW4=/tracks" for ::1 at 2021-04-29 04:43:21 -0400
+Processing by ArtistsController#artist_tracks as */*
+  Parameters: {"name"=>"Off the Wall:TWl", "duration"=>3.0, "eartist"=>"Y2h1ZW4=", "artist"=>{"name"=>"Off the Wall:TWl"}}
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y2h1ZW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:77
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
