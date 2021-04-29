@@ -10,7 +10,7 @@ class Album < ApplicationRecord
     self.ealbum  = @string
   end
 
-  def album_index(host)
+  def index(host)
     @eartist = artist.eartist
     @url_artist = "https://#{host}/artists/#{@eartist}"
     @url_self = "https://#{host}/albums/#{ealbum}"

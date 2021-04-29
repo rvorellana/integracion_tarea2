@@ -4,7 +4,7 @@ class TracksController < ApplicationController
     if Track.all.empty?
       render json: tracks, status: :ok
     else
-      render json: tracks.map{|c| c.track_index(request.host)}, status: :ok
+      render json: tracks.map{|c| c.index(request.host)}, status: :ok
     end
   end
 

@@ -10,7 +10,7 @@ class Artist < ApplicationRecord
     self.eartist  = @string
   end
 
-  def artist_index(host)
+  def index(host)
     @url = "https://#{host}/artists/#{eartist}"
     @artist_dict = {name: name, age: age, albums: "#{@url}/albums", tracks: "#{@url}/tracks", self: "#{@url}"}
     return @artist_dict

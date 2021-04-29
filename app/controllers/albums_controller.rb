@@ -3,7 +3,7 @@ class AlbumsController < ApplicationController
     if Album.all.empty?
       render json: Album.all, status: :ok
     else
-      @albums = Album.all.map{|c| c.album_index(request.host)}
+      @albums = Album.all.map{|c| c.index(request.host)}
       render json: @albums, status: :ok
     end
   end

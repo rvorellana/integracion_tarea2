@@ -9,7 +9,7 @@ class ArtistsController < ApplicationController
     if Artist.all.empty?
       render json: "No hay nadie", status: :ok
     else
-      artists = Artist.all.map{|c| c.artist_index(request.host)}
+      artists = Artist.all.map{|c| c.index(request.host)}
       render json: artists, status: :ok
     end
   end
@@ -106,6 +106,7 @@ class ArtistsController < ApplicationController
       artist.destroy
       render json: "Eliminado", status: :no_content
     end
-    
   end
+
+  
 end

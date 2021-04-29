@@ -1778,7 +1778,7 @@ Completed 200 OK in 17ms (Views: 5.1ms | ActiveRecord: 2.8ms)
 Started GET "/artists/Y3Jpc3RpYW4=/albums" for ::1 at 2021-04-29 02:20:07 -0400
   
 SyntaxError (/mnt/d/Desktop/2021-1/Taller de integración/Tarea 2/Tarea2_2/app/controllers/artists_controller.rb:54: syntax error, unexpected ',', expecting '}'
-....map{|c| c.index(request.host), status: :ok
+....map{|c| c.index(rails.root.to_s), status: :ok
 ...                              ^):
   
 app/controllers/artists_controller.rb:54: syntax error, unexpected ',', expecting '}'
@@ -4134,3 +4134,98 @@ Processing by AlbumsController#index as HTML
 Completed 200 OK in 8ms (Views: 2.2ms | ActiveRecord: 1.4ms)
 
 
+Started DELETE "/artists/TWljaGFlbCBKYWNrc29u" for ::1 at 2021-04-29 16:57:40 -0400
+Processing by ArtistsController#delete as */*
+  Parameters: {"name"=>"chueno", "age"=>2, "eartist"=>"TWljaGFlbCBKYWNrc29u", "artist"=>{"name"=>"chueno", "age"=>2}}
+  [1m[36mArtist Load (0.9ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "TWljaGFlbCBKYWNrc29u"], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:102
+Completed 404 Not Found in 5ms (Views: 0.1ms | ActiveRecord: 9.2ms)
+
+
+Started DELETE "/artists/TWljaGFlbCBKYWNrc29u" for ::1 at 2021-04-29 16:59:48 -0400
+Processing by ArtistsController#delete as */*
+  Parameters: {"name"=>"chueno", "age"=>2, "eartist"=>"TWljaGFlbCBKYWNrc29u", "artist"=>{"name"=>"chueno", "age"=>2}}
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "TWljaGFlbCBKYWNrc29u"], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:102
+Completed 404 Not Found in 3ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/artists" for ::1 at 2021-04-29 17:15:18 -0400
+Processing by ArtistsController#index as */*
+  Parameters: {"name"=>"chueno", "age"=>2, "artist"=>{"name"=>"chueno", "age"=>2}}
+  [1m[36mArtist Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "artists" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:9
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/controllers/artists_controller.rb:12
+Completed 500 Internal Server Error in 128ms (ActiveRecord: 11.6ms)
+
+
+  
+NameError (undefined local variable or method `rails' for #<ArtistsController:0x00007f73b803e138>
+Did you mean?  raise):
+  
+app/controllers/artists_controller.rb:12:in `block in index'
+app/controllers/artists_controller.rb:12:in `map'
+app/controllers/artists_controller.rb:12:in `index'
+Started GET "/artists" for ::1 at 2021-04-29 17:23:04 -0400
+Processing by ArtistsController#index as */*
+  Parameters: {"name"=>"chueno", "age"=>2, "artist"=>{"name"=>"chueno", "age"=>2}}
+  [1m[36mArtist Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "artists" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:9
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/controllers/artists_controller.rb:12
+Completed 200 OK in 17ms (Views: 0.3ms | ActiveRecord: 12.5ms)
+
+
+Started GET "/artists" for ::1 at 2021-04-29 17:23:16 -0400
+Processing by ArtistsController#index as */*
+  Parameters: {"name"=>"chueno", "age"=>2, "artist"=>{"name"=>"chueno", "age"=>2}}
+  [1m[36mArtist Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "artists" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:9
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/controllers/artists_controller.rb:12
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/artists" for ::1 at 2021-04-29 17:24:24 -0400
+Processing by ArtistsController#index as */*
+  Parameters: {"name"=>"chueno", "age"=>2, "artist"=>{"name"=>"chueno", "age"=>2}}
+  [1m[36mArtist Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "artists" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:9
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/controllers/artists_controller.rb:12
+Completed 200 OK in 19ms (Views: 0.5ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/artists/TWljaGFlbCBKYWNrc29ucw/albums" for ::1 at 2021-04-29 17:25:01 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"name"=>"chueno", "age"=>2, "eartist"=>"TWljaGFlbCBKYWNrc29ucw", "artist"=>{"name"=>"chueno", "age"=>2}}
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "TWljaGFlbCBKYWNrc29ucw"], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:57
+  [1m[36mAlbum Load (1.2ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 2]]
+  ↳ app/controllers/artists_controller.rb:64
+Completed 200 OK in 34ms (Views: 0.1ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/artists/TWljaGFlbCBKYWNrc29ucw/albums" for ::1 at 2021-04-29 17:25:51 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"gangsters", "genre"=>"bachata", "eartist"=>"TWljaGFlbCBKYWNrc29ucw", "album"=>{"name"=>"gangsters", "genre"=>"bachata"}}
+  [1m[36mArtist Load (0.9ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "TWljaGFlbCBKYWNrc29ucw"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:29
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."name" = $1 LIMIT $2[0m  [["name", "gangsters"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:37
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/albums_controller.rb:39
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:39
+  [1m[36mAlbum Create (1.0ms)[0m  [1m[32mINSERT INTO "albums" ("ealbum", "artist_id", "name", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ealbum", "Z2FuZ3N0ZXJz"], ["artist_id", 2], ["name", "gangsters"], ["genre", "bachata"], ["created_at", "2021-04-29 21:25:52.964909"], ["updated_at", "2021-04-29 21:25:52.964909"]]
+  ↳ app/controllers/albums_controller.rb:39
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/albums_controller.rb:39
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 7.8ms)
+
+
+  
+NoMethodError (undefined method `index' for #<Album:0x00007f73a4043070>):
+  
+app/controllers/albums_controller.rb:40:in `create'

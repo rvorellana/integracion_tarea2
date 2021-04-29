@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   post 'albums/:ealbum/tracks', to: 'tracks#create', as: 'track_create'
   put 'tracks/:etrack/play', to: 'tracks#track_play', as: 'track_play'
   delete 'tracks/:etrack', to: 'tracks#delete', as: 'track_delete'
+  get '/', to: 'artists#home', as: 'home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: 'artists#index'
+  root to: 'artists#home'
 end

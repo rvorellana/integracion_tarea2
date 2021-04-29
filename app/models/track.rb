@@ -10,7 +10,7 @@ class Track < ApplicationRecord
     self.etrack  = @string
   end
 
-  def track_index(host)
+  def index(host)
     @eartist = album.artist.eartist
     @ealbum = album.ealbum
     @url_artist = "https://#{host}/artists/#{@eartist}"
