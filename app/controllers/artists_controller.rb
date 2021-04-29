@@ -24,15 +24,20 @@ class ArtistsController < ApplicationController
     @artist = Artist.new(@artist_params)
     @artist.encodeartist
     
-    artist_exists = Artist.find_by name: @artist.name
-    if artist_exists.nil?
-      if @artist.save
-        render json: @artist.index(request.host), status: :created
+
+    if @artist.valid?
+      artist_exists = Artist.find_by name: @artist.name
+      if artist_exists.nil?
+        if @artist.save
+          render json: @artist.index(request.host), status: :created
+        else
+          render json: "Bad Request", status: :bad_request
+        end
       else
-        render json: "Bad Request", status: :bad_request
+        render json: artist_exists.index(request.host), status: :conflict
       end
     else
-      render json: artist_exists.index(request.host), status: :conflict
+      render json: "Bad Request", status: :bad_request
     end
   end
 
