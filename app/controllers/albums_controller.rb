@@ -65,9 +65,9 @@ class AlbumsController < ApplicationController
   end
 
   def delete
-    name = params[:eartist]
+    name = params[:ealbum]
     @album = Album.find_by ealbum: name
-    if @album.empty?
+    if @album.nil?
       render json: "No existe", status: :not_found
     else
       @album.destroy

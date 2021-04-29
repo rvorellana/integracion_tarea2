@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get 'artists', to: 'artists#index', as: 'artists_index'
   get 'artists/:eartist', to: 'artists#show', as: 'artist_show'
   post 'artists', to: 'artists#create', as: 'artist_create'
-  get 'artists/:eartist/albums', to: 'artists#artist_albums', as: 'artist_albums_path'
+  get 'artists/:eartist/albums', to: 'artists#artist_albums', as: 'artist_albums'
+  get 'artists/:eartist/tracks', to: 'artists#artist_tracks', as: 'artist_tracks'
   delete 'artists/:eartist', to: 'artists#delete', as: 'artist_delete'
 
   # Albums

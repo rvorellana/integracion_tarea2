@@ -2480,3 +2480,593 @@ Processing by AlbumsController#album_tracks as */*
 Completed 200 OK in 76ms (Views: 0.2ms | ActiveRecord: 16.1ms)
 
 
+Started GET "/albums/Z3JlYXRlc3QgaGl0cw==/tracks" for ::1 at 2021-04-29 03:25:32 -0400
+Processing by AlbumsController#album_tracks as */*
+  Parameters: {"name"=>"maquinon", "duration"=>4.7, "ealbum"=>"Z3JlYXRlc3QgaGl0cw==", "album"=>{"name"=>"maquinon"}}
+  [1m[36mAlbum Load (1.1ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Z3JlYXRlc3QgaGl0cw=="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:55
+  [1m[36mTrack Exists (3.0ms)[0m  [1m[34mSELECT  1 AS one FROM "tracks" WHERE "tracks"."album_id" = $1 LIMIT $2[0m  [["album_id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:59
+  [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = $1[0m  [["album_id", 3]]
+  ↳ app/controllers/albums_controller.rb:62
+  [1m[36mArtist Load (1.1ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/track.rb:16
+Completed 200 OK in 1822ms (Views: 0.3ms | ActiveRecord: 30.6ms)
+
+
+Started POST "/albums/Z3JlYXRlc3QgaGl0cw==/tracks" for ::1 at 2021-04-29 03:25:40 -0400
+Processing by TracksController#create as */*
+  Parameters: {"name"=>"maquinon", "duration"=>4.7, "ealbum"=>"Z3JlYXRlc3QgaGl0cw==", "track"=>{"name"=>"maquinon", "duration"=>4.7}}
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Z3JlYXRlc3QgaGl0cw=="], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:25
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:31
+  [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."name" = $1 LIMIT $2[0m  [["name", "maquinon"], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:35
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/track.rb:16
+  [1m[36mCACHE Artist Load (0.0ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/track.rb:16
+Completed 409 Conflict in 22ms (Views: 0.3ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/albums/Z3JlYXRlc3QgaGl0cw==/tracks" for ::1 at 2021-04-29 03:25:50 -0400
+Processing by TracksController#create as */*
+  Parameters: {"name"=>"maquinoaaaan", "duration"=>4.7, "ealbum"=>"Z3JlYXRlc3QgaGl0cw==", "track"=>{"name"=>"maquinoaaaan", "duration"=>4.7}}
+  [1m[36mAlbum Load (0.9ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Z3JlYXRlc3QgaGl0cw=="], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:25
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:31
+  [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."name" = $1 LIMIT $2[0m  [["name", "maquinoaaaan"], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:35
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mCACHE Artist Load (0.0ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mTrack Create (3.8ms)[0m  [1m[32mINSERT INTO "tracks" ("etrack", "name", "duration", "times_played", "album_id", "created_at", "updated_at", "artist_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["etrack", "bWFxdWlub2FhYWFu"], ["name", "maquinoaaaan"], ["duration", 4.7], ["times_played", 0], ["album_id", 3], ["created_at", "2021-04-29 07:25:50.392754"], ["updated_at", "2021-04-29 07:25:50.392754"], ["artist_id", 14]]
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/track.rb:16
+Completed 201 Created in 50ms (Views: 0.3ms | ActiveRecord: 10.1ms)
+
+
+Started POST "/albums/Z3JlYXRlc3QgaGl0cw==/tracks" for ::1 at 2021-04-29 03:30:37 -0400
+Processing by TracksController#create as */*
+  Parameters: {"name"=>"maquinoaaaadsadasdasdasdasdasdasdasdadasdasdasdasdasn", "duration"=>4.7, "ealbum"=>"Z3JlYXRlc3QgaGl0cw==", "track"=>{"name"=>"maquinoaaaadsadasdasdasdasdasdasdasdadasdasdasdasdasn", "duration"=>4.7}}
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Z3JlYXRlc3QgaGl0cw=="], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:25
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:31
+  [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."name" = $1 LIMIT $2[0m  [["name", "maquinoaaaadsadasdasdasdasdasdasdasdadasdasdasdasdasn"], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:35
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mCACHE Artist Load (0.0ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mTrack Create (0.8ms)[0m  [1m[32mINSERT INTO "tracks" ("etrack", "name", "duration", "times_played", "album_id", "created_at", "updated_at", "artist_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["etrack", "bWFxdWlub2FhYWFkc2FkYX"], ["name", "maquinoaaaadsadasdasdasdasdasdasdasdadasdasdasdasdasn"], ["duration", 4.7], ["times_played", 0], ["album_id", 3], ["created_at", "2021-04-29 07:30:37.284453"], ["updated_at", "2021-04-29 07:30:37.284453"], ["artist_id", 14]]
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/track.rb:16
+Completed 201 Created in 32ms (Views: 0.3ms | ActiveRecord: 6.9ms)
+
+
+Started POST "/artists/Y3Jpc3RpYW4=/tracks" for ::1 at 2021-04-29 03:39:48 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/artists/Y3Jpc3RpYW4=/tracks"):
+  
+actionpack (5.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.5) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/artists/Y3Jpc3RpYW4=/tracks" for ::1 at 2021-04-29 03:39:56 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/artists/Y3Jpc3RpYW4=/tracks"):
+  
+actionpack (5.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.5) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/artists/Y3Jpc3RpYW4=/tracks" for ::1 at 2021-04-29 03:40:53 -0400
+Processing by ArtistsController#artist_tracks as */*
+  Parameters: {"name"=>"maquinoaaaadsadasdasdasdasdasdasdasdadasdasdasdasdasn", "duration"=>4.7, "eartist"=>"Y3Jpc3RpYW4=", "artist"=>{"name"=>"maquinoaaaadsadasdasdasdasdasdasdasdadasdasdasdasdasn"}}
+  [1m[36mArtist Load (0.9ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:62
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 12.7ms)
+
+
+  
+NoMethodError (undefined method `empty?' for nil:NilClass):
+  
+app/controllers/artists_controller.rb:66:in `artist_tracks'
+Started GET "/artists/Y3Jpc3RpYW4=/tracks" for ::1 at 2021-04-29 03:41:39 -0400
+Processing by ArtistsController#artist_tracks as */*
+  Parameters: {"name"=>"maquinoaaaadsadasdasdasdasdasdasdasdadasdasdasdasdasn", "duration"=>4.7, "eartist"=>"Y3Jpc3RpYW4=", "artist"=>{"name"=>"maquinoaaaadsadasdasdasdasdasdasdasdadasdasdasdasdasn"}}
+  [1m[36mArtist Load (0.8ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:62
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 7.5ms)
+
+
+  
+NoMethodError (undefined method `empty?' for nil:NilClass):
+  
+app/controllers/artists_controller.rb:66:in `artist_tracks'
+Started GET "/artists/Y3Jpc3RpYW4=/tracks" for ::1 at 2021-04-29 03:42:24 -0400
+Processing by ArtistsController#artist_tracks as */*
+  Parameters: {"name"=>"maquinoaaaadsadasdasdasdasdasdasdasdadasdasdasdasdasn", "duration"=>4.7, "eartist"=>"Y3Jpc3RpYW4=", "artist"=>{"name"=>"maquinoaaaadsadasdasdasdasdasdasdasdadasdasdasdasdasn"}}
+  [1m[36mArtist Load (0.8ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y3Jpc3RpYW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:62
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 5.8ms)
+
+
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (5045.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "tarea22_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (283.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "tarea22_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (292.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "tarea22_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (778.2ms)[0m  [1m[35mCREATE DATABASE "tarea22_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (811.2ms)[0m  [1m[35mCREATE DATABASE "tarea22_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (19.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (12.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4521883091875854810)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateArtists (20210428173957)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (12.6ms)[0m  [1m[35mCREATE TABLE "artists" ("id" bigserial primary key, "eartist" character varying, "name" character varying, "age" integer, "albums" character varying, "tracks" character varying, "self" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210428173957_create_artists.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210428173957"]]
+  ↳ bin/rails:9
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateAlbums (20210428211200)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE TABLE "albums" ("id" bigserial primary key, "ealbum" character varying, "artist_id" bigint, "name" character varying, "genre" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_124a79559a"
+FOREIGN KEY ("artist_id")
+  REFERENCES "artists" ("id")
+)[0m
+  ↳ db/migrate/20210428211200_create_albums.rb:3
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE  INDEX  "index_albums_on_artist_id" ON "albums"  ("artist_id")[0m
+  ↳ db/migrate/20210428211200_create_albums.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210428211200"]]
+  ↳ bin/rails:9
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateTracks (20210428211906)
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (13.7ms)[0m  [1m[35mCREATE TABLE "tracks" ("id" bigserial primary key, "etrack" character varying, "name" character varying, "duration" integer, "times_played" float, "album_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_7c47d80164"
+FOREIGN KEY ("album_id")
+  REFERENCES "albums" ("id")
+)[0m
+  ↳ db/migrate/20210428211906_create_tracks.rb:3
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE  INDEX  "index_tracks_on_album_id" ON "tracks"  ("album_id")[0m
+  ↳ db/migrate/20210428211906_create_tracks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210428211906"]]
+  ↳ bin/rails:9
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to AddArtistToTrack (20210429065023)
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "tracks" ADD "artist_id" bigint[0m
+  ↳ db/migrate/20210429065023_add_artist_to_track.rb:3
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE  INDEX  "index_tracks_on_artist_id" ON "tracks"  ("artist_id")[0m
+  ↳ db/migrate/20210429065023_add_artist_to_track.rb:3
+  [1m[35m (3.6ms)[0m  [1m[35mALTER TABLE "tracks" ADD CONSTRAINT "fk_rails_d99a0cbd74"
+FOREIGN KEY ("artist_id")
+  REFERENCES "artists" ("id")
+[0m
+  ↳ db/migrate/20210429065023_add_artist_to_track.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210429065023"]]
+  ↳ bin/rails:9
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to ChangeMarkUpToFloat (20210429070324)
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (17.7ms)[0m  [1m[35mALTER TABLE "tracks" ALTER COLUMN "duration" TYPE float[0m
+  ↳ db/migrate/20210429070324_change_mark_up_to_float.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210429070324"]]
+  ↳ bin/rails:9
+  [1m[35m (4.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to ChangeMarkUpToInteger (20210429070558)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (17.2ms)[0m  [1m[35mALTER TABLE "tracks" ALTER COLUMN "times_played" TYPE integer[0m
+  ↳ db/migrate/20210429070558_change_mark_up_to_integer.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210429070558"]]
+  ↳ bin/rails:9
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-29 07:44:37.863824"], ["updated_at", "2021-04-29 07:44:37.863824"]]
+  ↳ bin/rails:9
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4521883091875854810)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/artists" for 127.0.0.1 at 2021-04-29 03:45:30 -0400
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+Processing by ArtistsController#index as HTML
+  [1m[36mArtist Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "artists" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:3
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/controllers/artists_controller.rb:4
+Completed 200 OK in 36ms (Views: 3.2ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/artists" for ::1 at 2021-04-29 03:45:43 -0400
+Processing by ArtistsController#index as */*
+  [1m[36mArtist Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "artists" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:3
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/controllers/artists_controller.rb:4
+Completed 200 OK in 8ms (Views: 1.9ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/artists" for ::1 at 2021-04-29 03:46:34 -0400
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"chuen", "artist"=>{"name"=>"chuen"}}
+Completed 400 Bad Request in 22ms (Views: 0.2ms | ActiveRecord: 5.6ms)
+
+
+Started POST "/artists" for ::1 at 2021-04-29 03:46:52 -0400
+Processing by ArtistsController#create as */*
+  Parameters: {"name"=>"chuen", "age"=>15, "artist"=>{"name"=>"chuen", "age"=>15}}
+  [1m[36mArtist Load (0.8ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "chuen"], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:29
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artists_controller.rb:31
+  [1m[36mArtist Create (1.6ms)[0m  [1m[32mINSERT INTO "artists" ("eartist", "name", "age", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["eartist", "Y2h1ZW4="], ["name", "chuen"], ["age", 15], ["created_at", "2021-04-29 07:46:52.154961"], ["updated_at", "2021-04-29 07:46:52.154961"]]
+  ↳ app/controllers/artists_controller.rb:31
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/artists_controller.rb:31
+Completed 201 Created in 38ms (Views: 0.3ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/artists/Y2h1ZW4=/albums" for ::1 at 2021-04-29 03:47:35 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"name"=>"chuen", "age"=>15, "eartist"=>"Y2h1ZW4=", "artist"=>{"name"=>"chuen", "age"=>15}}
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y2h1ZW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Load (1.4ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 1]]
+  ↳ app/controllers/artists_controller.rb:54
+Completed 200 OK in 55ms (Views: 0.2ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/artists/Y2h1ZW4=/tracks" for ::1 at 2021-04-29 03:47:45 -0400
+Processing by ArtistsController#artist_tracks as */*
+  Parameters: {"name"=>"chuen", "age"=>15, "eartist"=>"Y2h1ZW4=", "artist"=>{"name"=>"chuen", "age"=>15}}
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y2h1ZW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:62
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/artists/Y2h1ZW4=/albums" for ::1 at 2021-04-29 03:47:55 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"name"=>"chuen", "age"=>15, "eartist"=>"Y2h1ZW4=", "artist"=>{"name"=>"chuen", "age"=>15}}
+  [1m[36mArtist Load (1.1ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y2h1ZW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Load (0.8ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 1]]
+  ↳ app/controllers/artists_controller.rb:54
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/artists/Y2h1ZW4=/albums" for ::1 at 2021-04-29 03:48:28 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"chuenos", "genre"=>20, "eartist"=>"Y2h1ZW4=", "album"=>{"name"=>"chuenos", "genre"=>20}}
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y2h1ZW4="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:26
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."name" = $1 LIMIT $2[0m  [["name", "chuenos"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:36
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/albums_controller.rb:38
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:38
+  [1m[36mAlbum Create (1.9ms)[0m  [1m[32mINSERT INTO "albums" ("ealbum", "artist_id", "name", "genre", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["ealbum", "Y2h1ZW5vcw=="], ["artist_id", 1], ["name", "chuenos"], ["genre", "20"], ["created_at", "2021-04-29 07:48:28.086245"], ["updated_at", "2021-04-29 07:48:28.086245"]]
+  ↳ app/controllers/albums_controller.rb:38
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/albums_controller.rb:38
+Completed 201 Created in 38ms (Views: 0.2ms | ActiveRecord: 7.7ms)
+
+
+Started POST "/artists/Y2h1ZW4=/tracks" for ::1 at 2021-04-29 03:48:33 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/artists/Y2h1ZW4=/tracks"):
+  
+actionpack (5.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.5) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/artists/Y2h1ZW4=/tracks" for ::1 at 2021-04-29 03:48:46 -0400
+Processing by ArtistsController#artist_tracks as */*
+  Parameters: {"name"=>"chuenos", "genre"=>20, "eartist"=>"Y2h1ZW4=", "artist"=>{"name"=>"chuenos"}}
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y2h1ZW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:62
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/artists/Y2h1ZW4=/albums" for ::1 at 2021-04-29 03:48:57 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"name"=>"chuenos", "genre"=>20, "eartist"=>"Y2h1ZW4=", "artist"=>{"name"=>"chuenos"}}
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y2h1ZW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Load (1.1ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 1]]
+  ↳ app/controllers/artists_controller.rb:54
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/artists/Y2h1ZW4=/albums" for ::1 at 2021-04-29 03:49:03 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"chuenos", "genre"=>20, "eartist"=>"Y2h1ZW4=", "album"=>{"name"=>"chuenos", "genre"=>20}}
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y2h1ZW4="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:26
+  [1m[36mAlbum Load (0.9ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."name" = $1 LIMIT $2[0m  [["name", "chuenos"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:36
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/album.rb:15
+Completed 409 Conflict in 16ms (Views: 0.2ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/artists/Y2h1ZW4=/albums" for ::1 at 2021-04-29 03:49:05 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"chuenos", "genre"=>20, "eartist"=>"Y2h1ZW4=", "album"=>{"name"=>"chuenos", "genre"=>20}}
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y2h1ZW4="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:26
+  [1m[36mAlbum Load (0.9ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."name" = $1 LIMIT $2[0m  [["name", "chuenos"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:36
+  [1m[36mArtist Load (1.0ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/album.rb:15
+Completed 409 Conflict in 14ms (Views: 0.8ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/albums/Y2h1ZW5vcw==" for ::1 at 2021-04-29 03:50:10 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/albums/Y2h1ZW5vcw=="):
+  
+actionpack (5.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.5) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/artists/Y2h1ZW4=/albums" for ::1 at 2021-04-29 03:50:58 -0400
+Processing by AlbumsController#create as */*
+  Parameters: {"name"=>"chuenos", "genre"=>20, "eartist"=>"Y2h1ZW4=", "album"=>{"name"=>"chuenos", "genre"=>20}}
+  [1m[36mArtist Load (0.8ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y2h1ZW4="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:26
+  [1m[36mAlbum Load (0.8ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."name" = $1 LIMIT $2[0m  [["name", "chuenos"], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:36
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/album.rb:15
+Completed 409 Conflict in 14ms (Views: 0.2ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/albums/Y2h1ZW5vcw==" for ::1 at 2021-04-29 03:54:29 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/albums/Y2h1ZW5vcw=="):
+  
+actionpack (5.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.5) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/albums/Y2h1ZW5vcw==" for ::1 at 2021-04-29 03:54:55 -0400
+Processing by AlbumsController#show as */*
+  Parameters: {"name"=>"chuenos", "genre"=>20, "ealbum"=>"Y2h1ZW5vcw==", "album"=>{"name"=>"chuenos", "genre"=>20}}
+  [1m[36mAlbum Load (0.8ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Y2h1ZW5vcw=="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:13
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/album.rb:15
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/artists/Y2h1ZW4=/albums" for ::1 at 2021-04-29 03:56:31 -0400
+Processing by ArtistsController#artist_albums as */*
+  Parameters: {"eartist"=>"Y2h1ZW4="}
+  [1m[36mArtist Load (0.7ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."eartist" = $1 LIMIT $2[0m  [["eartist", "Y2h1ZW4="], ["LIMIT", 1]]
+  ↳ app/controllers/artists_controller.rb:47
+  [1m[36mAlbum Load (0.9ms)[0m  [1m[34mSELECT "albums".* FROM "albums" WHERE "albums"."artist_id" = $1[0m  [["artist_id", 1]]
+  ↳ app/controllers/artists_controller.rb:54
+Completed 200 OK in 9ms (Views: 0.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/albums/Y2h1ZW5vcw==/tracks" for ::1 at 2021-04-29 03:56:50 -0400
+Processing by AlbumsController#album_tracks as */*
+  Parameters: {"ealbum"=>"Y2h1ZW5vcw=="}
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Y2h1ZW5vcw=="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:55
+  [1m[36mTrack Exists (1.7ms)[0m  [1m[34mSELECT  1 AS one FROM "tracks" WHERE "tracks"."album_id" = $1 LIMIT $2[0m  [["album_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:59
+Completed 200 OK in 32ms (Views: 0.2ms | ActiveRecord: 5.7ms)
+
+
+Started POST "/albums/Y2h1ZW5vcw==/tracks" for ::1 at 2021-04-29 03:57:44 -0400
+Processing by TracksController#create as */*
+  Parameters: {"name"=>"megamaquinon", "duration"=>3.0, "ealbum"=>"Y2h1ZW5vcw==", "track"=>{"name"=>"megamaquinon", "duration"=>3.0}}
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Y2h1ZW5vcw=="], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:25
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:31
+  [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."name" = $1 LIMIT $2[0m  [["name", "megamaquinon"], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:35
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mAlbum Load (0.8ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mCACHE Artist Load (0.0ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mTrack Create (2.0ms)[0m  [1m[32mINSERT INTO "tracks" ("etrack", "name", "duration", "times_played", "album_id", "created_at", "updated_at", "artist_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["etrack", "bWVnYW1hcXVpbm9u"], ["name", "megamaquinon"], ["duration", 3.0], ["times_played", 0], ["album_id", 1], ["created_at", "2021-04-29 07:57:44.797134"], ["updated_at", "2021-04-29 07:57:44.797134"], ["artist_id", 1]]
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/track.rb:16
+Completed 201 Created in 56ms (Views: 0.3ms | ActiveRecord: 9.8ms)
+
+
+Started POST "/albums/Y2h1ZW5vcw==/tracks" for ::1 at 2021-04-29 04:01:24 -0400
+Processing by TracksController#create as */*
+  Parameters: {"name"=>"Off the Wall:TWl", "duration"=>3.0, "ealbum"=>"Y2h1ZW5vcw==", "track"=>{"name"=>"Off the Wall:TWl", "duration"=>3.0}}
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Y2h1ZW5vcw=="], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:25
+  [1m[36mArtist Load (0.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:31
+  [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."name" = $1 LIMIT $2[0m  [["name", "Off the Wall:TWl"], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:35
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mCACHE Artist Load (0.0ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mTrack Create (0.9ms)[0m  [1m[32mINSERT INTO "tracks" ("etrack", "name", "duration", "times_played", "album_id", "created_at", "updated_at", "artist_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["etrack", "T2ZmIHRoZSBXYWxsOlRXbA"], ["name", "Off the Wall:TWl"], ["duration", 3.0], ["times_played", 0], ["album_id", 1], ["created_at", "2021-04-29 08:01:24.460425"], ["updated_at", "2021-04-29 08:01:24.460425"], ["artist_id", 1]]
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tracks_controller.rb:37
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/track.rb:16
+Completed 201 Created in 32ms (Views: 0.2ms | ActiveRecord: 6.7ms)
+
+
+Started POST "/albums/Y2h1ZW5vcw==/tracks" for ::1 at 2021-04-29 04:11:31 -0400
+Processing by TracksController#create as */*
+  Parameters: {"name"=>"Off the Wall:TWl", "duration"=>3.0, "ealbum"=>"Y2h1ZW5vcw==", "track"=>{"name"=>"Off the Wall:TWl", "duration"=>3.0}}
+  [1m[36mAlbum Load (1.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Y2h1ZW5vcw=="], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:25
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 15.7ms)
+
+
+  
+NoMethodError (undefined method `empty?' for #<Album:0x00007fffd3e687e8>):
+  
+app/controllers/tracks_controller.rb:26:in `create'

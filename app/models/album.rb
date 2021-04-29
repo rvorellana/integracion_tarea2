@@ -1,6 +1,7 @@
 class Album < ApplicationRecord
   belongs_to :artist
   has_many :tracks, dependent: :destroy
+  has_many :albums, dependent: :destroy
   validates :name, :genre, presence: true
 
   def encodealbum
