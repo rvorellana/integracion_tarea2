@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post 'artists', to: 'artists#create', as: 'artist_create'
   get 'artists/:eartist/albums', to: 'artists#artist_albums', as: 'artist_albums'
   get 'artists/:eartist/tracks', to: 'artists#artist_tracks', as: 'artist_tracks'
-  patch 'artists/:eartist/albums/play', to: 'artists#artist_play', as: 'artist_play'
+  put 'artists/:eartist/albums/play', to: 'artists#artist_play', as: 'artist_play'
   delete 'artists/:eartist', to: 'artists#delete', as: 'artist_delete'
 
   # Albums
