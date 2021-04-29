@@ -26,11 +26,11 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    if params.key?('name') && params.key?('age')
-      name = params['name'] 
-      age = params["age"]
+    if params[:artist].key?('name') && params[:artist].key?('age')
+      name = params[:artist]['name'] 
+      age = params[:artist]["age"]
       if name.is_a?(String) && age.is_a?(Integer)
-        artist_params = params.permit(:name, :age)
+        artist_params = params.require(:artist).permit(:name, :age)
         artist = Artist.new(artist_params)
         artist.encodeartist
         artist_exists = Artist.find_by name: artist.name
