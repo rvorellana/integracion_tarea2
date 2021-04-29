@@ -13,9 +13,9 @@ class Track < ApplicationRecord
   def index(host)
     @eartist = album.artist.eartist
     @ealbum = album.ealbum
-    @url_artist = "https://#{host}/artists/#{@eartist}"
-    @url_self = "https://#{host}/tracks/#{etrack}"
-    @url_album = "https://#{host}/albums/#{@ealbum}"
+    @url_artist = "#{host}/artists/#{@eartist}"
+    @url_self = "#{host}/tracks/#{etrack}"
+    @url_album = "#{host}/albums/#{@ealbum}"
     @track_dict = {name: name, duration: duration, times_played: times_played, artist: "#{@url_artist}", album: "#{@url_album}", self: "#{@url_self}"}
     return @track_dict
   end
