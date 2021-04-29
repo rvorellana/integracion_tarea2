@@ -35,16 +35,16 @@ class TracksController < ApplicationController
 
 
   def create
-    if (params[:track].key?("name")) && (params[:track].key?("duration"))
-      name = params[:track]["name"]
-      duration = params[:track]["duration"]
+    if (params.key?("name")) && (params.key?("duration"))
+      name = params["name"]
+      duration = params["duration"]
       if duration.is_a?(Float) and name.is_a?(String)
         album_name = params[:ealbum]
         album = Album.find_by ealbum: album_name
         if album.nil?
           render json: "No existe album", status: :unprocessable_entity
         else
-          track_params = params.require(:track).permit(:name, :duration)
+          track_params = params.permit(:name, :duration)
           track_params[:album_id] = album.id
           track_params[:artist_id] = album.artist.id
           track_params["times_played"] = 0

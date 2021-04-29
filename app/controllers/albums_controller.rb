@@ -21,16 +21,16 @@ class AlbumsController < ApplicationController
 
   def create
 
-    if (params[:album].key?("name")) && (params[:album].key?("genre"))
-      name = params[:album]["name"]
-      genre = params[:album]["genre"]
+    if (params.key?("name")) && (params.key?("genre"))
+      name = params["name"]
+      genre = params["genre"]
       if name.is_a?(String) && genre.is_a?(String)
         artist_name = params[:eartist]
         artist = Artist.find_by eartist: artist_name
         if artist.nil?
           render json: "Error no existe artista", status: :unprocessable_entity
         else
-          album_params = params.require(:album).permit(:name, :genre)
+          album_params = params.permit(:name, :genre)
           album_params[:artist_id] = artist.id
           album = Album.new(album_params)
           album.encodealbum
