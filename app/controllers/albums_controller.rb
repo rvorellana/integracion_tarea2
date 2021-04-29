@@ -49,6 +49,21 @@ class AlbumsController < ApplicationController
     end
   end
 
+
+  def album_tracks
+    name = params[:ealbum]
+    album = Album.find_by ealbum: name
+    if album.nil?
+      render json: "Not found", status: :not_found
+    else
+      if album.tracks.empty?
+        render json: "", status: :ok
+      else
+        render json: album.tracks.map{|c| c.index(request.host)}, status: :ok
+      end
+    end
+  end
+
   def delete
     name = params[:eartist]
     @album = Album.find_by ealbum: name
