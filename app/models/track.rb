@@ -18,7 +18,7 @@ class Track < ApplicationRecord
     @url_artist = "https://#{host}/artists/#{@eartist}"
     @url_self = "https://#{host}/tracks/#{etrack}"
     @url_album = "https://#{host}/albums/#{@ealbum}"
-    @track_dict = {name: name, duration: duration, times_played: times_played, artist: "#{@url_artist}", albums: "#{@url_album}", self: "#{@url_self}"}
+    @track_dict = {name: name, duration: duration, times_played: times_played, artist: "#{@url_artist}", album: "#{@url_album}", self: "#{@url_self}"}
     return @track_dict
   end
 

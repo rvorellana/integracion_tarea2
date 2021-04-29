@@ -20,7 +20,7 @@ class TracksController < ApplicationController
   end
 
   def create
-    if ((params[:track].key?("name")) && (params[:track].key?("duration")) && (params[:track].keys.length ==2 ))
+    if ((params[:track].key?("name")) && (params[:track].key?("duration")) && (params[:track].keys.length==2 ))
       album_name = params[:ealbum]
       album = Album.find_by ealbum: album_name
       if album.nil?
