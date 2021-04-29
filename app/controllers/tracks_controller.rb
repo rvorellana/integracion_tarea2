@@ -4,7 +4,7 @@ class TracksController < ApplicationController
     if Track.all.empty?
       render json: tracks, status: :ok
     else
-      render json: tracks.map{|c| c.index(request.host)}, status: :ok
+      render json: tracks.map{|c| c.track_index(request.host)}, status: :ok
     end
   end
 
@@ -12,7 +12,6 @@ class TracksController < ApplicationController
     name = params[:etrack]
     
     track = Track.find_by etrack: name
-    # render json: track, status: :ok
 
     if track.nil?
       render json: "Not Found", status: :not_found

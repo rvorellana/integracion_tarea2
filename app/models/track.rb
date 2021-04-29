@@ -1,8 +1,6 @@
 class Track < ApplicationRecord
   belongs_to :album
   belongs_to :artist
-  validates :name, :duration, presence: true
-  validates :duration, numericality: {only_float: true}
 
   def encodetrack
     @string = Base64.encode64(self.name).gsub("\n", '')
@@ -12,7 +10,7 @@ class Track < ApplicationRecord
     self.etrack  = @string
   end
 
-  def index(host)
+  def track_index(host)
     @eartist = album.artist.eartist
     @ealbum = album.ealbum
     @url_artist = "https://#{host}/artists/#{@eartist}"

@@ -1,9 +1,15 @@
 class ArtistsController < ApplicationController
+
+
+  def home
+    render json: "Tremendo", status: :ok
+  end
+
   def index
     if Artist.all.empty?
       render json: "No hay nadie", status: :ok
     else
-      artists = Artist.all.map{|c| c.index(request.host)}
+      artists = Artist.all.map{|c| c.artist_index(request.host)}
       render json: artists, status: :ok
     end
   end
@@ -20,28 +26,28 @@ class ArtistsController < ApplicationController
   end
 
   def create
-      if params[:artist].key?('name') && params[:artist].key?('age')
-        name = params[:artist]['name'] 
-        age = params[:artist]["age"]
-        if name.is_a?(String) && age.is_a?(Integer)
-          artist_params = params.require(:artist).permit(:name, :age)
-          artist = Artist.new(artist_params)
-          artist.encodeartist
-          artist_exists = Artist.find_by name: artist.name
-          if artist_exists.nil?
-            if artist.save
-              render json: artist.index(request.host), status: :created
-            else
-              render json: "No validado", status: :bad_request
-            end
+    if params[:artist].key?('name') && params[:artist].key?('age')
+      name = params[:artist]['name'] 
+      age = params[:artist]["age"]
+      if name.is_a?(String) && age.is_a?(Integer)
+        artist_params = params.require(:artist).permit(:name, :age)
+        artist = Artist.new(artist_params)
+        artist.encodeartist
+        artist_exists = Artist.find_by name: artist.name
+        if artist_exists.nil?
+          if artist.save
+            render json: artist.index(request.host), status: :created
           else
-            render json: artist_exists.index(request.host), status: :conflict
+            render json: "No validado", status: :bad_request
           end
         else
-          render json: "Parámetros incorrectos", status: :bad_request
+          render json: artist_exists.index(request.host), status: :conflict
         end
       else
         render json: "Parámetros incorrectos", status: :bad_request
+      end
+    else
+      render json: "Parámetros incorrectos", status: :bad_request
     end
   end
 
