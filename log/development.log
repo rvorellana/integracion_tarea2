@@ -1983,3 +1983,144 @@ Processing by AlbumsController#album_tracks as */*
 Completed 200 OK in 44ms (Views: 0.1ms | ActiveRecord: 9.5ms)
 
 
+Started GET "/albums/Z3JlYXRlc3QgadsaGl0cw==/tracks" for ::1 at 2021-04-29 02:30:02 -0400
+Processing by AlbumsController#album_tracks as */*
+  Parameters: {"ealbum"=>"Z3JlYXRlc3QgadsaGl0cw=="}
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Z3JlYXRlc3QgadsaGl0cw=="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:55
+Completed 404 Not Found in 5ms (Views: 0.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/albums/Z3JlYXRlc3QgaGl0cw==/tracks" for ::1 at 2021-04-29 02:30:07 -0400
+Processing by AlbumsController#album_tracks as */*
+  Parameters: {"ealbum"=>"Z3JlYXRlc3QgaGl0cw=="}
+  [1m[36mAlbum Load (1.1ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Z3JlYXRlc3QgaGl0cw=="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:55
+  [1m[36mTrack Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "tracks" WHERE "tracks"."album_id" = $1 LIMIT $2[0m  [["album_id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:59
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/albums/Z3JlYXRlc3QgaGl0cw==/tracks" for ::1 at 2021-04-29 02:31:48 -0400
+Processing by TracksController#create as */*
+  Parameters: {"name"=>"maquinon", "caca"=>"tremendo", "ealbum"=>"Z3JlYXRlc3QgaGl0cw==", "track"=>{"name"=>"maquinon"}}
+Completed 400 Bad Request in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/albums/Z3JlYXRlc3QgaGl0cw==/tracks" for ::1 at 2021-04-29 02:31:56 -0400
+Processing by TracksController#create as */*
+  Parameters: {"name"=>"maquinon", "duration"=>"tremendo", "ealbum"=>"Z3JlYXRlc3QgaGl0cw==", "track"=>{"name"=>"maquinon", "duration"=>"tremendo"}}
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:25
+Completed 422 Unprocessable Entity in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/albums/Z3JlYXRlc3QgaGl0cw==/tracks" for ::1 at 2021-04-29 02:32:03 -0400
+Processing by TracksController#create as */*
+  Parameters: {"name"=>"maquinon", "duration"=>4.0, "ealbum"=>"Z3JlYXRlc3QgaGl0cw==", "track"=>{"name"=>"maquinon", "duration"=>4.0}}
+  [1m[36mAlbum Load (1.1ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:25
+Completed 422 Unprocessable Entity in 5ms (Views: 0.1ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/albums/Z3JlYXRlc3QgaGl0cw==/tracks" for ::1 at 2021-04-29 02:32:18 -0400
+Processing by TracksController#create as */*
+  Parameters: {"name"=>"maquinon", "duration"=>4.0, "ealbum"=>"Z3JlYXRlc3QgaGl0cw==", "track"=>{"name"=>"maquinon", "duration"=>4.0}}
+  [1m[36mAlbum Load (1.0ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:25
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/albums/Z3JlYXRlc3QgaGl0cw==/tracks" for ::1 at 2021-04-29 02:32:44 -0400
+Processing by TracksController#create as */*
+  Parameters: {"name"=>"maquinon", "duration"=>4.0, "ealbum"=>"Z3JlYXRlc3QgaGl0cw==", "track"=>{"name"=>"maquinon", "duration"=>4.0}}
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Z3JlYXRlc3QgaGl0cw=="], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:25
+  [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."name" = $1 LIMIT $2[0m  [["name", "maquinon"], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:34
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tracks_controller.rb:36
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:36
+  [1m[36mTrack Create (4.3ms)[0m  [1m[32mINSERT INTO "tracks" ("etrack", "name", "duration", "times_played", "album_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["etrack", "bWFxdWlub24="], ["name", "maquinon"], ["duration", 4], ["times_played", 0.0], ["album_id", 3], ["created_at", "2021-04-29 06:32:44.787978"], ["updated_at", "2021-04-29 06:32:44.787978"]]
+  ↳ app/controllers/tracks_controller.rb:36
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tracks_controller.rb:36
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/track.rb:15
+Completed 500 Internal Server Error in 108ms (ActiveRecord: 25.3ms)
+
+
+  
+NameError (undefined local variable or method `ealbums' for #<Track:0x00007f40880490f0>
+Did you mean?  @ealbum
+               album
+               album=):
+  
+app/models/track.rb:19:in `index'
+app/controllers/tracks_controller.rb:37:in `create'
+Started POST "/albums/Z3JlYXRlc3QgaGl0cw==/tracks" for ::1 at 2021-04-29 02:34:35 -0400
+Processing by TracksController#create as */*
+  Parameters: {"name"=>"maquinon", "duration"=>4.0, "ealbum"=>"Z3JlYXRlc3QgaGl0cw==", "track"=>{"name"=>"maquinon", "duration"=>4.0}}
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Z3JlYXRlc3QgaGl0cw=="], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:25
+  [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."name" = $1 LIMIT $2[0m  [["name", "maquinon"], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:34
+Completed 500 Internal Server Error in 180ms (ActiveRecord: 1.5ms)
+
+
+  
+NameError (undefined local variable or method `track_exist' for #<TracksController:0x00007fffcb1a8128>
+Did you mean?  track_exists):
+  
+app/controllers/tracks_controller.rb:42:in `create'
+Started POST "/albums/Z3JlYXRlc3QgaGl0cw==/tracks" for ::1 at 2021-04-29 02:35:28 -0400
+Processing by TracksController#create as */*
+  Parameters: {"name"=>"maquinon", "duration"=>4.0, "ealbum"=>"Z3JlYXRlc3QgaGl0cw==", "track"=>{"name"=>"maquinon", "duration"=>4.0}}
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Z3JlYXRlc3QgaGl0cw=="], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:25
+  [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."name" = $1 LIMIT $2[0m  [["name", "maquinon"], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:34
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/track.rb:15
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/track.rb:15
+Completed 500 Internal Server Error in 114ms (ActiveRecord: 14.6ms)
+
+
+  
+NameError (undefined local variable or method `ealbums' for #<Track:0x00007f409815a4c0>
+Did you mean?  @ealbum
+               album
+               album=):
+  
+app/models/track.rb:19:in `index'
+app/controllers/tracks_controller.rb:42:in `create'
+Started POST "/albums/Z3JlYXRlc3QgaGl0cw==/tracks" for ::1 at 2021-04-29 02:36:40 -0400
+Processing by TracksController#create as */*
+  Parameters: {"name"=>"maquinon", "duration"=>4.0, "ealbum"=>"Z3JlYXRlc3QgaGl0cw==", "track"=>{"name"=>"maquinon", "duration"=>4.0}}
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Z3JlYXRlc3QgaGl0cw=="], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:25
+  [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."name" = $1 LIMIT $2[0m  [["name", "maquinon"], ["LIMIT", 1]]
+  ↳ app/controllers/tracks_controller.rb:34
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/track.rb:15
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/track.rb:15
+Completed 409 Conflict in 86ms (Views: 0.3ms | ActiveRecord: 15.2ms)
+
+
+Started GET "/albums/Z3JlYXRlc3QgaGl0cw==/tracks" for ::1 at 2021-04-29 02:36:46 -0400
+Processing by AlbumsController#album_tracks as */*
+  Parameters: {"name"=>"maquinon", "duration"=>4.0, "ealbum"=>"Z3JlYXRlc3QgaGl0cw==", "album"=>{"name"=>"maquinon"}}
+  [1m[36mAlbum Load (0.6ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Z3JlYXRlc3QgaGl0cw=="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:55
+  [1m[36mTrack Exists (1.5ms)[0m  [1m[34mSELECT  1 AS one FROM "tracks" WHERE "tracks"."album_id" = $1 LIMIT $2[0m  [["album_id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:59
+  [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = $1[0m  [["album_id", 3]]
+  ↳ app/controllers/albums_controller.rb:62
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/track.rb:15
+Completed 200 OK in 19ms (Views: 0.3ms | ActiveRecord: 2.9ms)
+
+

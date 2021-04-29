@@ -21,7 +21,7 @@ class TracksController < ApplicationController
 
   def create
     if ((params[:track].key?("name")) && (params[:track].key?("duration")) && (params[:track].keys.length ==2 ))
-      album_name = params[:etrack]
+      album_name = params[:ealbum]
       album = Album.find_by ealbum: album_name
       if album.nil?
         render json: "", status: :unprocessable_entity
@@ -39,7 +39,7 @@ class TracksController < ApplicationController
             render json: "error no se pudo", status: :bad_request
           end
         else
-          render json: track_exist.index(request.host), status: :conflict
+          render json: track_exists.index(request.host), status: :conflict
         end
       end
     else
