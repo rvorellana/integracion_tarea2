@@ -1,18 +1,21 @@
 class ArtistsController < ApplicationController
   def index
-    @artists = Artist.all.map{|c| c.index(request.host)}
-    render json: @artists, status: :created
-    
+    if Artist.all.empty?
+      render json: Artist.all, status: :ok
+    else
+      @artists = Artist.all.map{|c| c.index(request.host)}
+      render json: @artists, status: :ok
+    end
   end
 
   def show
     name = params[:eartist]
     @artist = Artist.find_by eartist: name
 
-    if @artist
-      render json: @artist, status: :created
+    if @artist.nil?
+      render json: "Not_found", status: :not_found
     else
-      render json: "error", status: :bad_request
+      render json: @artist.index, status: :ok
     end
   end
 
@@ -20,31 +23,45 @@ class ArtistsController < ApplicationController
     @artist_params = params.require(:artist).permit(:name, :age)
     @artist = Artist.new(@artist_params)
     @artist.encodeartist
-    if @artist.save
-      render json: @artist, status: :created
+    
+    artist_exists = Artist.find_by name: @artist.name
+
+    if artist_exists.nil?
+      if @artist.save
+        render json: @artist.index, status: :created
+      else
+        render json: "Bad Request", status: :bad_request
+      end
     else
-      render json: "error", status: :bad_request
-    end
+      render json: artist_exists.index, status: :conflict
   end
 
 
-  def update
+  def artist_albums
     name = params[:eartist]
-    @artist = Artist.find_by eartist: name
-    @artist_params = params.require(:artist).permit(:name, :age)
-
-    if @artist.update(@artist_params)
-      render json: @artist, status: :created
+    artist = Artist.find_by eartist: name
+    if artist.nil?
+      render json: "Not found", status: :not_found
     else
-      render json: @artist, status: :bad_request
+      if artist.albums.empty?
+        render json: @artist.albums, status: :ok
+      else
+        @albums = artist.albums.map{|c| c.index(request.host)}
+        render json: @albums
     end
   end
+
 
   def delete
     name = params[:eartist]
     @artist = Artist.find_by eartist: name
-    @artist.destroy
+    if @artist.empty?
+      render json: "No existe", status: :not_found
+    else
+      @artist.destroy
+      render json: "Eliminado", status: :no_content
+    end
     
-    render json: "bien"
+    render json: "Eliminado", status: :no_content
   end
 end

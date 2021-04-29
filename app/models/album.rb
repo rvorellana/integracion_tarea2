@@ -1,6 +1,7 @@
 class Album < ApplicationRecord
   belongs_to :artist
   has_many :tracks, dependent: :destroy
+  validates :name, :gender, presence: true
 
   def encodealbum
     @string = Base64.encode64(self.name).gsub("\n", '')
@@ -9,4 +10,13 @@ class Album < ApplicationRecord
     end
     self.ealbum  = @string
   end
+
+  def index(host)
+    @eartist = artist.eartist
+    @url_artist = "https://#{host}/artists/#{@eartist}"
+    @url_self = "https://#{host}/albums/#{ealbum}"
+    @album_dict = {name: name, genre: genre, artist: "#{@url_artist}", tracks: "#{@url_self}/tracks", self: "#{@url_self}"}
+    return @album_dict
+  end
+
 end
