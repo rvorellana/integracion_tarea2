@@ -21,33 +21,35 @@ class AlbumsController < ApplicationController
 
   def create
 
-    if ((params[:album].key?("name")) && (params[:album].key?("genre")) && (params[:album].keys.length <=2 ))
-      artist_name = params[:eartist]
-      artist = Artist.find_by eartist: artist_name
-      if artist.nil?
-        render json: "Error no existe artista", status: :unprocessable_entity
-        
-      else
-        @album_params = params.require(:album).permit(:name, :genre)
-        @album_params[:artist_id] = artist.id
-        @album = Album.new(@album_params)
-        @album.encodealbum
-
-        album_exists = Album.find_by name: @album.name
-        if album_exists.nil?
-          if @album.save
-            render json: @album.index(request.host), status: :created
+    if (params[:album].key?("name")) && (params[:album].key?("genre"))
+        name = params[:album]["name"]
+        genre = params[:album]["genre"]
+        if name.is_a?(String) && genre.is_a?(String)
+          artist_name = params[:eartist]
+          artist = Artist.find_by eartist: artist_name
+          if artist.nil?
+            render json: "Error no existe artista", status: :unprocessable_entity
           else
-            render json: "error no se pudo", status: :bad_request
+            album_params = params.require(:album).permit(:name, :genre)
+            album_params[:artist_id] = artist.id
+            album = Album.new(album_params)
+            album.encodealbum
+            album_exists = Album.find_by name: album.name
+            if album_exists.nil?
+              if album.save
+                render json: album.index(request.host), status: :created
+              else
+                render json: "error no se pudo", status: :bad_request
+              end
+            else
+              render json: album_exists.index(request.host), status: :conflict
+            end
           end
         else
-          render json: album_exists.index(request.host), status: :conflict
+          render json: "error no se pudo", status: :bad_request
         end
       end
-    else
-      render json: "error no se pudo", status: :bad_request
     end
-  end
 
 
   def album_tracks
