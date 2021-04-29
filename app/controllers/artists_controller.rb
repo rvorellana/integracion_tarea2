@@ -34,6 +34,7 @@ class ArtistsController < ApplicationController
       end
     else
       render json: artist_exists.index, status: :conflict
+    end
   end
 
 
@@ -48,6 +49,7 @@ class ArtistsController < ApplicationController
       else
         @albums = artist.albums.map{|c| c.index(request.host)}
         render json: @albums
+      end
     end
   end
 

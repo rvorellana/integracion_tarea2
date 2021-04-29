@@ -5,6 +5,7 @@ class TracksController < ApplicationController
       render json: @tracks, status: :ok
     else
       render json: @tracks.map{|c| c.index(request.host)}, status: :ok
+    end
   end
 
   def show
