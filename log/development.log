@@ -2231,3 +2231,146 @@ FOREIGN KEY ("artist_id")
   ↳ bin/rails:9
   [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+Started GET "/albums/Z3JlYXRlc3QgaGl0cw==/tracks" for ::1 at 2021-04-29 02:54:55 -0400
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+Processing by AlbumsController#album_tracks as */*
+  Parameters: {"name"=>"maquinon", "duration"=>4.0, "chuen"=>"chuen", "ealbum"=>"Z3JlYXRlc3QgaGl0cw==", "album"=>{"name"=>"maquinon"}}
+  [1m[36mAlbum Load (1.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."ealbum" = $1 LIMIT $2[0m  [["ealbum", "Z3JlYXRlc3QgaGl0cw=="], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:55
+  [1m[36mTrack Exists (2.6ms)[0m  [1m[34mSELECT  1 AS one FROM "tracks" WHERE "tracks"."album_id" = $1 LIMIT $2[0m  [["album_id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/albums_controller.rb:59
+  [1m[36mTrack Load (1.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."album_id" = $1[0m  [["album_id", 3]]
+  ↳ app/controllers/albums_controller.rb:62
+  [1m[36mArtist Load (1.0ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/track.rb:16
+Completed 200 OK in 1606ms (Views: 0.3ms | ActiveRecord: 26.4ms)
+
+
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4521883091875854810)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to ChangeDateFormatInMyTable (20210429065933)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210429065933"]]
+  ↳ bin/rails:9
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4521883091875854810)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4521883091875854810)[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+Migrating to ChangeDateFormatInMyTable (20210429065933)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Destroy (1.3ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20210429065933"]]
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4521883091875854810)[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4521883091875854810)[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+Migrating to ChangeMarkUpToFloat (20210429070324)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "track" ALTER COLUMN "duration" TYPE float[0m
+  ↳ db/migrate/20210429070324_change_mark_up_to_float.rb:3
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4521883091875854810)[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4521883091875854810)[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+Migrating to ChangeMarkUpToFloat (20210429070324)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "Track" ALTER COLUMN "duration" TYPE float[0m
+  ↳ db/migrate/20210429070324_change_mark_up_to_float.rb:3
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(4521883091875854810)[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4521883091875854810)[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+Migrating to ChangeMarkUpToFloat (20210429070324)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (36.2ms)[0m  [1m[35mALTER TABLE "tracks" ALTER COLUMN "duration" TYPE float[0m
+  ↳ db/migrate/20210429070324_change_mark_up_to_float.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210429070324"]]
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (9.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(4521883091875854810)[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4521883091875854810)[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+Migrating to ChangeMarkUpToInteger (20210429070558)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "tracks" ALTER COLUMN "times_player" TYPE integer[0m
+  ↳ db/migrate/20210429070558_change_mark_up_to_integer.rb:3
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4521883091875854810)[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4521883091875854810)[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+Migrating to ChangeMarkUpToInteger (20210429070558)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (25.3ms)[0m  [1m[35mALTER TABLE "tracks" ALTER COLUMN "times_played" TYPE integer[0m
+  ↳ db/migrate/20210429070558_change_mark_up_to_integer.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210429070558"]]
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (5.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(4521883091875854810)[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/rvorellana/.rvm/gems/ruby-2.6.3/bin/rake:23
