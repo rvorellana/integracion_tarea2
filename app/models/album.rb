@@ -7,7 +7,7 @@ class Album < ApplicationRecord
     if @string.length > 22
       @string = @string[0,22]
     end
-    self.ealbum  = @string
+    return @string
   end
 
   def index(host)

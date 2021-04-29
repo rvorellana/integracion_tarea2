@@ -32,10 +32,11 @@ class ArtistsController < ApplicationController
       if name.is_a?(String) && age.is_a?(Integer)
         artist_params = params.require(:artist).permit(:name, :age)
         artist = Artist.new(artist_params)
-        artist.encodeartist
         artist_exists = Artist.find_by name: artist.name
         if artist_exists.nil?
           if artist.save
+            encode = {eartist: artist.encodeartist}
+            artist.update(encode)
             render json: artist.index(request.host), status: :created
           else
             render json: "No validado", status: :bad_request

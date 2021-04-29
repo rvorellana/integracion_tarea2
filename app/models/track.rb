@@ -7,7 +7,7 @@ class Track < ApplicationRecord
     if @string.length > 22
       @string = @string[0,22]
     end
-    self.etrack  = @string
+    return @string
   end
 
   def index(host)

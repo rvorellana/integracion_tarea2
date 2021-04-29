@@ -7,7 +7,7 @@ class Artist < ApplicationRecord
     if @string.length > 22
       @string = @string[0,22]
     end
-    self.eartist  = @string
+    return @string
   end
 
   def index(host)
