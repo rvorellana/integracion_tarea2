@@ -63,10 +63,10 @@ class ArtistsController < ApplicationController
     if artist.nil?
       render json: "Not found", status: :not_found
     else
-      if artist.albums.empty?
+      if artist.tracks.empty?
         render json: "", status: :ok
       else
-        render json: artist.albums.map{|c| c.index(request.host)}, status: :ok
+        render json: artist.tracks.map{|c| c.index(request.host)}, status: :ok
       end
     end
   end
