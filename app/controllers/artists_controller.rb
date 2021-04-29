@@ -25,7 +25,6 @@ class ArtistsController < ApplicationController
     @artist.encodeartist
     
     artist_exists = Artist.find_by name: @artist.name
-
     if artist_exists.nil?
       if @artist.save
         render json: @artist.index, status: :created
