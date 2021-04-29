@@ -5459,3 +5459,8 @@ Processing by AlbumsController#create as */*
 Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2021-04-29 19:28:04 -0400
+Processing by ArtistsController#home as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+

@@ -28,7 +28,7 @@ class TracksController < ApplicationController
     if track.nil?
       render json: "No existe", status: :not_found
     else
-      track.play
+      track.update(track.play_track)
       render json: track.index(request.host), status: :ok
     end
   end
@@ -54,7 +54,7 @@ class TracksController < ApplicationController
             encode = {etrack: track.encodetrack}
             if track.save
               track.update(encode)
-            render json: track.index(request.host), status: :created
+              render json: track.index(request.host), status: :created
             else
               render json: "error no se pudo", status: :bad_request
             end
