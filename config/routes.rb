@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # Albums
   get 'albums', to: 'albums#index', as: 'albums_index'
   get 'albums/:ealbum', to: 'albums#show', as: 'album_show'
+  put 'albums/:ealbum/tracks/play', to: 'albums#album_play', as: 'album_play'
+
   get 'albums/:ealbum/tracks', to: 'albums#album_tracks', as: 'album_tracks'
   post 'artists/:eartist/albums', to: 'albums#create', as: 'album_create'
   delete 'albums/:ealbum', to: 'albums#delete', as: 'album_delete'

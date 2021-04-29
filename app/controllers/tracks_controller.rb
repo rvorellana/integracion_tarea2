@@ -19,6 +19,20 @@ class TracksController < ApplicationController
     end
   end
 
+
+
+  def track_play
+    name = params[:etrack]
+    @track = Track.find_by etrack: name
+    if @track.nil?
+      render json: "No existe", status: :not_found
+    else
+      @track.play
+      render json: @track.index, status: :ok
+    end
+  end
+
+
   def create
     if ((params[:track].key?("name")) && (params[:track].key?("duration")) && (params[:track].keys.length==2 ))
       album_name = params[:ealbum]
