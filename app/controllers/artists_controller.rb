@@ -15,7 +15,7 @@ class ArtistsController < ApplicationController
     if @artist.nil?
       render json: "Not_found", status: :not_found
     else
-      render json: @artist.index, status: :ok
+      render json: @artist.index(request.host), status: :ok
     end
   end
 
@@ -27,12 +27,12 @@ class ArtistsController < ApplicationController
     artist_exists = Artist.find_by name: @artist.name
     if artist_exists.nil?
       if @artist.save
-        render json: @artist.index, status: :created
+        render json: @artist.index(request.host), status: :created
       else
         render json: "Bad Request", status: :bad_request
       end
     else
-      render json: artist_exists.index, status: :conflict
+      render json: artist_exists.index(request.host), status: :conflict
     end
   end
 

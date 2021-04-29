@@ -15,7 +15,7 @@ class TracksController < ApplicationController
     if @track.nil?
       render json: "Not Found", status: :not_found
     else
-      render json: @track.index, status: :ok
+      render json: @track.index(request.host), status: :ok
     end
   end
 
@@ -23,7 +23,7 @@ class TracksController < ApplicationController
     album_name = params[:etrack]
     album = Album.find_by ealbum: album_name
     if album.nil?
-      render json: "Error no existe album", status: :not_found
+      render json: "", status: :unprocessable_entity
     else
       @track_params = params.require(:track).permit(:name, :duration)
       @track_params[:album_id] = album.id
@@ -33,12 +33,12 @@ class TracksController < ApplicationController
       track_exists = Track.find_by name: @track.name
       if track_exists.empty?
         if @track.save
-          render json: @track.index, status: :created
+          render json: @track.index(request.host), status: :created
         else
           render json: "error no se pudo", status: :bad_request
         end
       else
-        render json: track_exists.index, status: :conflict
+        render json: track_exist.index(request.host), status: :conflict
       end
     end
   end

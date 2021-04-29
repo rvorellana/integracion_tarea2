@@ -15,7 +15,7 @@ class AlbumsController < ApplicationController
     if @album.nil?
       render json: "Not Found", status: :not_found
     else
-      render json: @album.index, status: :ok
+      render json: @album.index(request.host), status: :ok
     end
   end
 
@@ -23,7 +23,7 @@ class AlbumsController < ApplicationController
     artist_name = params[:eartist]
     artist = Artist.find_by eartist: artist_name
     if artist.nil?
-      render json: "Error no existe artista", status: :not_found
+      render json: "Error no existe artista", status: :unprocessable_entity
       
     else
       @album_params = params.require(:album).permit(:name, :genre)
@@ -34,12 +34,12 @@ class AlbumsController < ApplicationController
       album_exists = Album.find_by name: @album.name
       if album_exists.nil?
         if @album.save
-          render json: @album.index, status: :created
+          render json: @album.index(request.host), status: :created
         else
           render json: "error no se pudo", status: :bad_request
         end
       else
-        render json: album_exists.index, status: :conflict
+        render json: album_exists.index(request.host), status: :conflict
       end
     end
   end
