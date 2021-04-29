@@ -35,28 +35,34 @@ class TracksController < ApplicationController
 
 
   def create
-    if ((params[:track].key?("name")) && (params[:track].key?("duration")) && (params[:track].keys.length<=2 ))
-      album_name = params[:ealbum]
-      album = Album.find_by ealbum: album_name
-      if album.nil?
-        render json: "", status: :unprocessable_entity
-      else
-        @track_params = params.require(:track).permit(:name, :duration)
-        @track_params[:album_id] = album.id
-        @track_params[:artist_id] = album.artist.id
-        @track_params["times_played"] = 0
-        @track = Track.new(@track_params)
-        @track.encodetrack
-        track_exists = Track.find_by name: @track.name
-        if track_exists.nil?
-          if @track.save
-            render json: @track.index(request.host), status: :created
-          else
-            render json: "error no se pudo", status: :bad_request
-          end
+    if (params[:track].key?("name")) && (params[:track].key?("duration"))
+      name = params[:track]["name"]
+      duration = params[:track]["duration"]
+      if duration.is_a?(Float) and name.is_a?(String)
+        album_name = params[:ealbum]
+        album = Album.find_by ealbum: album_name
+        if album.nil?
+          render json: "No existe album", status: :unprocessable_entity
         else
-          render json: track_exists.index(request.host), status: :conflict
+          track_params = params.require(:track).permit(:name, :duration)
+          track_params[:album_id] = album.id
+          track_params[:artist_id] = album.artist.id
+          track_params["times_played"] = 0
+          track = Track.new(track_params)
+          track.encodetrack
+          track_exists = Track.find_by name: track.name
+          if track_exists.nil?
+            if track.save
+            render json: track.index(request.host), status: :created
+            else
+              render json: "error no se pudo", status: :bad_request
+            end
+          else
+            render json: track_exists.index(request.host), status: :conflict
+          end
         end
+      else
+        render json: "error no se pudo", status: :bad_request
       end
     else
       render json: "error no se pudo", status: :bad_request
