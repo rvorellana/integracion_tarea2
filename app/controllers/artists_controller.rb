@@ -25,7 +25,7 @@ class ArtistsController < ApplicationController
     @artist.encodeartist
     
 
-    if @artist.valid?
+      if ((params[:artist].key?("name")) && (params[:artist].key?("age")) && (params[:artist].keys.length ==2 ))
       artist_exists = Artist.find_by name: @artist.name
       if artist_exists.nil?
         if @artist.save

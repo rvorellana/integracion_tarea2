@@ -21,7 +21,7 @@ class AlbumsController < ApplicationController
 
   def create
 
-    if ((params[:album].key?("name")) && (params[:album].key?("genre")) && (params[:akbum].keys.length ==2 ))
+    if ((params[:album].key?("name")) && (params[:album].key?("genre")) && (params[:album].keys.length ==2 ))
       artist_name = params[:eartist]
       artist = Artist.find_by eartist: artist_name
       if artist.nil?
