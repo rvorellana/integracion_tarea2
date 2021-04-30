@@ -3,7 +3,8 @@ class Album < ApplicationRecord
   has_many :tracks, dependent: :destroy
 
   def encodealbum
-    @string = Base64.encode64(self.name).gsub("\n", '')
+    @string = "#{artist.name}:#{self.name}"
+    @string = Base64.encode64(@string).gsub("\n", '')
     @string = @string.truncate(22)
     return @string
   end
