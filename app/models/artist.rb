@@ -5,7 +5,7 @@ class Artist < ApplicationRecord
   def encodeartist
     @string = Base64.encode64(self.name).gsub("\n", '')
     @string = @string[0,22]
-    return @string
+    self.eartist = @string
   end
 
   def index(host)

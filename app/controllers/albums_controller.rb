@@ -33,11 +33,10 @@ class AlbumsController < ApplicationController
           album_params = params.require(:album).permit(:name, :genre)
           album_params[:artist_id] = artist.id
           album = Album.new(album_params)
-          album_exists = Album.find_by name: album.name
+          album.encondealbum
+          album_exists = Album.find_by ealbum: album.ealbum
           if album_exists.nil?
             if album.save
-              encode ={ealbum: album.encodealbum}
-              album.update(encode)
               render json: album.index(request.host), status: :created
             else
               render json: "error no se pudo", status: :bad_request

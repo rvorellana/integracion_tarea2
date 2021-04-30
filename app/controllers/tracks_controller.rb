@@ -49,11 +49,11 @@ class TracksController < ApplicationController
           track_params[:artist_id] = album.artist.id
           track_params["times_played"] = 0
           track = Track.new(track_params)
-          track_exists = Track.find_by name: track.name
+          track.encodetrack
+          track_exists = Track.find_by etrack: track.etrack
           if track_exists.nil?
             encode = {etrack: track.encodetrack}
             if track.save
-              track.update(encode)
               render json: track.index(request.host), status: :created
             else
               render json: "error no se pudo", status: :bad_request

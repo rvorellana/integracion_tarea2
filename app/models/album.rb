@@ -6,7 +6,7 @@ class Album < ApplicationRecord
     @string = "#{artist.name}:#{self.name}"
     @string = Base64.encode64(@string).gsub("\n", '')
     @string = @string[0,22]
-    return @string
+    self.ealbum = @string
   end
 
   def index(host)

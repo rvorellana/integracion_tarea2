@@ -6,7 +6,7 @@ class Track < ApplicationRecord
     @string = "#{album.name}:#{self.name}"
     @string = Base64.encode64(@string).gsub("\n", '')
     @string = @string[0,22]
-    return @string
+    self.etrack = @string
   end
 
   def index(host)
