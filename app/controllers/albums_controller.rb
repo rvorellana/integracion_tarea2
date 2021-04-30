@@ -33,7 +33,7 @@ class AlbumsController < ApplicationController
           album_params = params.require(:album).permit(:name, :genre)
           album_params[:artist_id] = artist.id
           album = Album.new(album_params)
-          album.encondealbum
+          album.encodealbum
           album_exists = Album.find_by ealbum: album.ealbum
           if album_exists.nil?
             if album.save
