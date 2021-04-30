@@ -9,7 +9,7 @@ class TracksController < ApplicationController
   end
 
   def show
-    name = params[:etrack]
+    name = params[:etrackid]
     
     track = Track.find_by etrack: name
 
@@ -23,7 +23,7 @@ class TracksController < ApplicationController
 
 
   def track_play
-    name = params[:etrack]
+    name = params[:etrackid]
     track = Track.find_by etrack: name
     if track.nil?
       render json: "No existe", status: :not_found
@@ -39,7 +39,7 @@ class TracksController < ApplicationController
       name = params[:track]["name"]
       duration = params[:track]["duration"]
       if duration.is_a?(Float) and name.is_a?(String)
-        album_name = params[:ealbum]
+        album_name = params[:ealbumid]
         album = Album.find_by ealbum: album_name
         if album.nil?
           render json: "No existe album", status: :unprocessable_entity
@@ -71,7 +71,7 @@ class TracksController < ApplicationController
   end
 
   def delete
-    name = params[:etrack]
+    name = params[:etrackid]
     track = Track.find_by etrack: name
     if track.nil?
       render json: "No existe", status: :not_found

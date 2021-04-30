@@ -15,7 +15,7 @@ class ArtistsController < ApplicationController
   end
 
   def show
-    name = params[:eartist]
+    name = params[:eartistid]
     artist = Artist.find_by eartist: name
 
     if artist.nil?
@@ -54,7 +54,7 @@ class ArtistsController < ApplicationController
 
 
   def artist_albums
-    name = params[:eartist]
+    name = params[:eartistid]
     artist = Artist.find_by eartist: name
     if artist.nil?
       render json: "Not found", status: :not_found
@@ -68,7 +68,7 @@ class ArtistsController < ApplicationController
   end
 
   def artist_play
-    name = params[:eartist]
+    name = params[:eartistid]
     artist = Artist.find_by eartist: name
     if artist.nil?
       render json: "Not found", status: :not_found
@@ -84,7 +84,7 @@ class ArtistsController < ApplicationController
 
 
   def artist_tracks
-    name = params[:eartist]
+    name = params[:eartistid]
     artist = Artist.find_by eartist: name
     if artist.nil?
       render json: "Not found", status: :not_found
@@ -99,7 +99,7 @@ class ArtistsController < ApplicationController
 
 
   def delete
-    name = params[:eartist]
+    name = params[:eartistid]
     artist = Artist.find_by eartist: name
     if artist.nil?
       render json: "No existe", status: :not_found

@@ -9,7 +9,7 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    name = params[:ealbum]
+    name = params[:ealbumid]
     @album = Album.find_by ealbum: name
 
     if @album.nil?
@@ -25,7 +25,7 @@ class AlbumsController < ApplicationController
       name = params[:album]["name"]
       genre = params[:album]["genre"]
       if name.is_a?(String) && genre.is_a?(String)
-        artist_name = params[:eartist]
+        artist_name = params[:eartistid]
         artist = Artist.find_by eartist: artist_name
         if artist.nil?
           render json: "Error no existe artista", status: :unprocessable_entity
@@ -56,7 +56,7 @@ class AlbumsController < ApplicationController
 
 
   def album_tracks
-    name = params[:ealbum]
+    name = params[:ealbumid]
     album = Album.find_by ealbum: name
     if album.nil?
       render json: "Not found", status: :not_found
@@ -71,7 +71,7 @@ class AlbumsController < ApplicationController
 
 
   def album_play
-    name = params[:ealbum]
+    name = params[:ealbumid]
     album = Album.find_by ealbum: name
     if album.nil?
       render json: "Not found", status: :not_found
@@ -87,7 +87,7 @@ class AlbumsController < ApplicationController
 
 
   def delete
-    name = params[:ealbum]
+    name = params[:ealbumid]
     @album = Album.find_by ealbum: name
     if @album.nil?
       render json: "No existe", status: :not_found
