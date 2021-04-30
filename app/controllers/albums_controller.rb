@@ -10,12 +10,12 @@ class AlbumsController < ApplicationController
 
   def show
     name = params[:ealbumid]
-    @album = Album.find_by ealbum: name
+    album = Album.find_by(ealbum: name)
 
-    if @album.nil?
+    if album.nil?
       render json: "Not Found", status: :not_found
     else
-      render json: @album.index(request.host), status: :ok
+      render json: album.index(request.host), status: :ok
     end
   end
 

@@ -40,7 +40,7 @@ class TracksController < ApplicationController
       duration = params[:track]["duration"]
       if duration.is_a?(Float) and name.is_a?(String)
         album_name = params[:ealbumid]
-        album = Album.find_by ealbum: album_name
+        album = Album.find_by_ealbum(album_name)
         if album.nil?
           render json: "No existe album", status: :unprocessable_entity
         else
