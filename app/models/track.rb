@@ -3,7 +3,7 @@ class Track < ApplicationRecord
   belongs_to :artist
 
   def encodetrack
-    @string = "#{album.ealbum}:#{self.name}"
+    @string = "#{self.name}:#{album.ealbum}"
     @string = Base64.encode64(@string).gsub("\n", '')
     @string = @string[0,22]
     self.etrack = @string

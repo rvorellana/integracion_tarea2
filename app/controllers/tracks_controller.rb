@@ -14,7 +14,7 @@ class TracksController < ApplicationController
     track = Track.find_by(etrack: name)
 
     if track.nil?
-      render json: {"TRACK": track, "TRACKS MIOS": Track.all}, status: :not_found
+      render json: "Not Found", status: :not_found
     else
       render json: track.index(request.host), status: :ok
     end
