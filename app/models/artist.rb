@@ -4,7 +4,7 @@ class Artist < ApplicationRecord
 
   def encodeartist
     @string = Base64.encode64(self.name).gsub("\n", '')
-    @string = @string.truncate(22)
+    @string = @string[0,22]
     return @string
   end
 

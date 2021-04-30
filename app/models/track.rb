@@ -5,7 +5,7 @@ class Track < ApplicationRecord
   def encodetrack
     @string = "#{album.name}:#{self.name}"
     @string = Base64.encode64(@string).gsub("\n", '')
-    @string = @string.truncate(22)
+    @string = @string[0,22]
     return @string
   end
 
