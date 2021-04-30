@@ -42,7 +42,7 @@ class TracksController < ApplicationController
         album_name = params[:ealbumid]
         album = Album.find_by_ealbum(album_name)
         if album.nil?
-          render json: "No existe album", status: :unprocessable_entity
+          render json: {"ALBUM": Album.find_by_ealbum(album_name), "albuum": album}, status: :unprocessable_entity
         else
           track_params = params.require(:track).permit(:name, :duration)
           track_params[:album_id] = album.id

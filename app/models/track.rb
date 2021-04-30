@@ -11,7 +11,7 @@ class Track < ApplicationRecord
   end
 
   def index(host)
-    @eartist = album.artist.eartist
+    @eartist = artist.eartist
     @ealbum = album.ealbum
     @url_artist = "#{host}/artists/#{@eartist}"
     @url_self = "#{host}/tracks/#{etrack}"
