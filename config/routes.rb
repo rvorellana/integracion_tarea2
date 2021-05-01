@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   delete 'tracks', to: 'errors#index'
 
   get 'tracks/:etrackid', to: 'tracks#show', as: 'track_show'
-  delete 'tracks/:etrackid', to: 'errors#index'
+  delete 'tracks/:etrackid', to: 'tracks#delete'
   put 'tracks/:etrackid', to: 'errors#index'
   post 'tracks/:etrackid', to: 'errors#index'
   
